@@ -46,7 +46,6 @@ has_many :likes
 |condition|text|null: false, foreign_key: true|
 |postage_id|integer|null:false, foreign_key: true|
 |shipping_method_id|integer|null: false, foreign_key: true|
-|prefecture_id|string|null: false, foreign_key: true|
 |shipping_date_id|integer|null: false, foreign_key: true|
 |price|integer|null: false|
 |description|text|null:false|
@@ -55,7 +54,6 @@ has_many :likes
 has_many :likes, dependent: :destroy
 has_many :transactions, dependent: :destroy
 belongs_to :user
-belongs_to :prefecture
 belongs_to :condition
 has_many :category_items, dependent: :destroy
 has_many :categorys, through: :category_items
@@ -68,6 +66,7 @@ belongs_to :shipping_method
 belongs_to :size
 has_many :item_comments
 belongs_to :item_condition
+belongs_to_active_hash :prefecture
 
 
 
@@ -76,14 +75,13 @@ belongs_to :item_condition
 |------|----|-------|
 |user_id|integer|null:false, foreign_key: true|
 |post_code|integer|null:false|
-|prefecture_id|integer|null: false, foreign_key: true|
 |city|string|null: false|
 |district_number|integer|null:false|
 |building_name|string|
 |building_phone|integer|
 ### Association
 belongs_to :user
-belongs_to :prefecture
+belongs_to_active_hash :prefecture
 
 
 
@@ -166,16 +164,6 @@ belongs_to :rate
 |provider|string|
 ### Association
 belongs_to :user
-
-
-
-## prefecturesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|string|
-### Association
-has_many :addresses
-has_many :items
 
 
 
