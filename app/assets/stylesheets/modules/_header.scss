@@ -75,6 +75,32 @@
       line-height: 36px;
       li {
         margin-left: 20px;
+        align-items: center;
+        a {
+          -webkit-box-align: center;
+          transform: scale(1);
+          transition: all 0.3s ease-out 0s;
+        }
+        img {
+          border-radius: 50%;
+        }
+        .img {
+          width: 32px;
+          border-radius: 50%;
+          height: 30px;
+          vertical-align: middle;
+        }
+        span {
+          padding-bottom: 5px;
+        }
+      }
+    }
+    a:hover {
+      i {
+        color: #0099e8;
+      }
+      span {
+        color: #0099e8;
       }
     }
   }
