@@ -23,15 +23,15 @@
 |birth_month|integer|
 |birth_day|integer|
 ### Association
-has_many :item_comments
-has_many :sns_credentials, dependent: :destroy
-has_one :address
-has_many :items, dependent: :destroy
-has_many :transaction_users, dependent: :destroy
-has_many :transactions, through: :transaction_users, dependent: :destroy
-has_many :transaction_comments, dependent: :
-has_many :rates
-has_many :likes
+- has_many :item_comments
+- has_many :sns_credentials, dependent: :destroy
+- has_one :address
+- has_many :items, dependent: :destroy
+- has_many :transaction_users, dependent: :destroy
+- has_many :transactions, through: :transaction_users, dependent: :destroy
+- has_many :transaction_comments, dependent: :
+- has_many :rates
+- has_many :likes
 
 
 
@@ -51,22 +51,22 @@ has_many :likes
 |description|text|null:false|
 |likes_count|integer|
 ### Association
-has_many :likes, dependent: :destroy
-has_many :transactions, dependent: :destroy
-belongs_to :user
-belongs_to :condition
-has_many :category_items, dependent: :destroy
-has_many :categorys, through: :category_items
-belongs_to :shipping_time
-belongs_to :profit
-has_many :images, dependent: :destroy
-belongs_to :brand
-belongs_to :postage
-belongs_to :shipping_method
-belongs_to :size
-has_many :item_comments
-belongs_to :item_condition
-belongs_to_active_hash :prefecture
+- has_many :likes, dependent: :destroy
+- has_many :transactions, dependent: :destroy
+- belongs_to :user
+- belongs_to :condition
+- has_many :category_items, dependent: :destroy
+- has_many :categorys, through: :category_items
+- belongs_to :shipping_time
+- belongs_to :profit
+- has_many :images, dependent: :destroy
+- belongs_to :brand
+- belongs_to :postage
+- belongs_to :shipping_method
+- belongs_to :size
+- has_many :item_comments
+- belongs_to :item_condition
+- belongs_to_active_hash :prefecture
 
 
 
@@ -80,8 +80,8 @@ belongs_to_active_hash :prefecture
 |building_name|string|
 |building_phone|integer|
 ### Association
-belongs_to :user
-belongs_to_active_hash :prefecture
+- belongs_to :user
+- belongs_to_active_hash :prefecture
 
 
 
@@ -92,8 +92,8 @@ belongs_to_active_hash :prefecture
 |user_id|integer|null:false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 
 
@@ -104,8 +104,8 @@ belongs_to :item
 |user_id|integer|null:false, foreign_key: true|
 |process_id|integer|null: false, foreign_key: true|
 ### Association
-belongs_to :transactions
-belongs_to :user
+- belongs_to :transactions
+- belongs_to :user
 
 
 
@@ -115,7 +115,7 @@ belongs_to :user
 |image|string|null:false|
 |item_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :item
+- belongs_to :item
 
 
 
@@ -125,11 +125,11 @@ belongs_to :item
 |name|string|null:false|
 |parent_id|integer|
 ### Association
-has_many :category_items, dependent: :destroy
-has_many :items, through: :category_items, dependent: :destroy
-belongs_to :size
-belongs_to :parent, class_name: :Category
-has_many :children, class_name: :Category, foreign_key: :parent_id
+- has_many :category_items, dependent: :destroy
+- has_many :items, through: :category_items, - dependent: :destroy
+- belongs_to :size
+- belongs_to :parent, class_name: :Category
+- has_many :children, class_name: :Category, foreign_key: :parent_id
 
 
 
@@ -138,8 +138,8 @@ has_many :children, class_name: :Category, foreign_key: :parent_id
 |------|----|-------|
 |name|string|null:false|
 ### Association
-has_many :items
-has_many :categories
+- has_many :items
+- has_many :categories
 
 
 
@@ -151,8 +151,8 @@ has_many :categories
 |comment|text|
 |process_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :user
-belongs_to :rate 
+- belongs_to :user
+- belongs_to :rate 
 
 
 
@@ -163,7 +163,7 @@ belongs_to :rate
 |uid|string|
 |provider|string|
 ### Association
-belongs_to :user
+- belongs_to :user
 
 
 
@@ -173,8 +173,8 @@ belongs_to :user
 |user_id|integer|null:false, foreign_key: true|
 |item_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 
 
@@ -186,11 +186,11 @@ belongs_to :item
 |item_id|integer|null:false, foreign_key: true|
 |buyer_id|integer|null:false, foreign_key: true|
 ### Association
-has_many :transaction_users, dependent: :destroy
-has_many :users, through: :transaction_users, dependent: :destroy
-belongs_to :item
-belongs_to :transaction_state
-belongs_to :buyer, class_name: "User"
+- has_many :transaction_users, dependent: :destroy
+- has_many :users, through: :transaction_users, dependent: :destroy
+- belongs_to :item
+- belongs_to :transaction_state
+- belongs_to :buyer, class_name: "User"
 
 
 
@@ -199,7 +199,7 @@ belongs_to :buyer, class_name: "User"
 |------|----|-------|
 |state|string|
 ### Association
-has_many :transactions
+- has_many :transactions
 
 
 
@@ -209,8 +209,8 @@ has_many :transactions
 |user_id|integer|null:false, foreign_key: true|
 |transaction_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :transaction
-belongs_to :user
+- belongs_to :transaction
+- belongs_to :user
 
 
 
@@ -221,8 +221,8 @@ belongs_to :user
 |comment|text|null: false|
 |transaction_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :transactions
-belongs_to :user
+- belongs_to :transactions
+- belongs_to :user
 
 
 
@@ -231,7 +231,7 @@ belongs_to :user
 |------|----|-------|
 |state|string|null:false|
 ### Association
-has_many :items
+- has_many :items
 
 
 
@@ -240,7 +240,7 @@ has_many :items
 |------|----|-------|
 |condition|string|null:false|
 ### Association
-has_many :items
+- has_many :items
 
 
 
@@ -250,8 +250,8 @@ has_many :items
 |item_id|integer|null:false, foreign_key: true|
 |category_id|integer|null:false, foreign_key: true|
 ### Association
-belongs_to :item
-belongs_to :category
+- belongs_to :item
+- belongs_to :category
 
 
 
@@ -261,8 +261,8 @@ belongs_to :category
 |item_id|integer|null:false, foreign_key: true|
 |size|string|null: false|
 ### Association
-has_many :items
-has_many :categories
+- has_many :items
+- has_many :categories
 
 
 
@@ -271,7 +271,7 @@ has_many :categories
 |------|----|-------|
 |days|integer|null:false, foreign_key: true|
 ### Association
-has_many :items
+- has_many :items
 
 
 
@@ -282,7 +282,7 @@ has_many :items
 |shipping_cost|integer|null: false|
 |profit|integer|null: false|
 ### Association
-has_many :items
+- has_many :items
 
 
 
@@ -291,7 +291,7 @@ has_many :items
 |------|----|-------|
 |burden|string|null: false|
 ### Association
-has_many :items
+- has_many :items
 
 
 
@@ -300,7 +300,7 @@ has_many :items
 |------|----|-------|
 |method|string|null: false|
 ### Association
-has_many :items
+- has_many :items
 
 
 
