@@ -12,112 +12,91 @@
         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png")
       .slick-prev
         = image_tag("https://web-jp-assets.mercdn.net/_next/static/images/carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png")
-  .pickup-container
-    .pickup-header
-      %h2.pickup-header__name
-        人気のカテゴリ
-      .pickup-header__junre
-        %ul
-          %li
-            レディース
-          %li
-            メンズ
-          %li
-            家電・スマホ・カメラ
-          %li
-            おもちゃ・ホビー・グッズ
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              レディース新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              メンズ新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              家電・スマホ・カメラ新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              おもちゃ・ホビー・グッズ新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-      -# ブランド
-    .pickup-header
-      %h2.pickup-header__name
-        人気のブランド
-      .pickup-header__junre
-        %ul
-          %li
-            シャネル
-          %li
-            ルイヴィトン
-          %li
-            シュプリーム
-          %li
-            ナイキ
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              シャネル新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              ルイヴィトン新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              シュプリーム新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
-    .pickup-contents
-      .pickup-content__price-box
-        .pickup-contents-box
-          .pickup-contents__header
-            .pickup-contents__header-name
-              ナイキ新着アイテム
-            .pickup-contents__header-more
-              = link_to "もっと見る ＞", "#"
-          .pickup-contents__image
-            = render 'items/product'
+  .top__header__area
+    .top__header__area__popularity
+      %h2.top__header__area__popularity-headline 人気のカテゴリー
+    %ul.top__header__area__popularity__category
+      %li レディース
+      %li メンズ
+      %li 家電・スマホ・カメラ
+      %li おもちゃ・ホビー・グッズ
+  %section.new__items
+    .new__items-genre
+      %h3
+        レディース新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        メンズ新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        家電・スマホ・カメラ新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        おもちゃ・ホビー・グッズ新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  .top__header__area
+    .top__header__area__popularity
+      %h2.top__header__area__popularity-headline 人気のブランド
+    %ul.top__header__area__popularity__category
+      %li シャネル
+      %li ルイヴィトン
+      %li シュプリーム
+      %li ナイキ
+  %section.new__items
+    .new__items-genre
+      %h3
+        シャネル新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        ルイヴィトン新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        シュプリーム新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
+
+  %section.new__items
+    .new__items-genre
+      %h3
+        ナイキ新着アイテム
+      %a
+        %span.new__items-more もっと見る
+        = fa_icon 'angle-right'
+  = render 'items/product'
 = render 'items/footer'
