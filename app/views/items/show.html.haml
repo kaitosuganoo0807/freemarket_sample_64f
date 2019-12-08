@@ -1,0 +1,138 @@
+= render 'items/header'
+
+.product-show-main-background
+  %section.product-show-product-box-container
+    %h1
+      .product-name
+        test
+    .product-main-content
+      .product-photo
+        -# メイン画像
+        .image
+          = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s")
+        -# サムネイル画像
+        .owl-dot
+          .owl-dot__product.current
+            .owl-dot__product__box
+              = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s"), class: "image-sub"
+      %table.product-detail-table
+        %tbody
+          %tr
+          %th 出品者
+          %td
+            =link_to '#' do
+              %p
+                test shop
+            %br/
+            .evaluation
+              = fa_icon 'smile-o', class: "icon-smile"
+              %span
+                10
+                %span
+            .evaluation
+              = fa_icon 'meh-o', class: "icon-meh"
+              %span
+                0
+                %span
+            .evaluation
+              = fa_icon 'frown-o', class: "icon-frown"
+              %span
+                0
+                %span
+        %tr
+          %th カテゴリー
+          %td
+            %div
+              %a
+                test-1
+              %div
+                %a
+                  = fa_icon 'chevron-right'
+                  test-2
+              %div
+                %a
+                  = fa_icon 'chevron-right'
+                  test-3
+        %tr
+          %th ブランド
+          %td
+            =link_to "#" do
+              test
+        %tr
+          %th 商品の状態
+          %td
+            未使用
+        %tr
+          %th 配送料の負担
+          %td
+            送料込み（出品者負担）
+        %tr
+          %th 配送の方法
+          %td
+            らくらくメルカリ便
+        %tr
+          %th 配送元地域
+          %td
+            =link_to "#" do
+              東京都
+        %tr
+          %th 発送日の目安
+          %td
+            2-3日で発送
+    .product-price-box
+      %span.product-price
+        ¥2,000
+      %span.product-tax （税込）
+      %span.product-fee_payer 送料込み
+    = link_to "#" do
+      .product-buy-btn 購入画面に進む
+    .product-description
+      %p.product-description__inner
+        これはフリー画像です！！
+    .product-button-container.clearfix
+      .product-button-left
+        .product-button-like
+          %button{type: "button", name: "like!", class: "product-button"}
+            = fa_icon "heart-o"
+            %span.fade-in-down いいね!
+            %span.fade-in-down 0
+      .product-button__report
+        = link_to "", class: "product-button__report" do
+          = fa_icon "flag-o"
+          %span.fade-in-down 不適切な商品の報告
+      .product-button-right
+        = link_to '#' do
+          = fa_icon "lock"
+          あんしん・あんぜんへの取り組み
+
+  .message-content__box__form
+    .product-message-content
+      .product-message-form
+        %form#new_comment.new_comment
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "ay8wVVJ1p40rToOJJfUDnYrE7wkLhG33XzLE4GCyWO71aPUXyZKqndgwCjD+/iwxbj8D7RsHdgksf5T/BdSZXA=="}/
+          %p.attention
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.message-form{name: "body", type: "text", value: ""}
+          .message-submit__details
+            %input.comment-button{"data-disable-with": "コメントする", name: "commit", type: "submit", value: "コメントする"}/
+    .nav-product-link
+      .previous-product.items-link_to
+        =fa_icon "chevron-left"
+        = link_to "前の商品へ", "#"
+        .next-product.items-link_to
+          = link_to "次の商品へ", "#"
+          = fa_icon "chevron-right"
+      .product-social-media-box
+        .text-center
+        %ul.social-media-box
+          %li
+            = link_to "#", target: "_blank", class: "share-btn" do
+              = fa_icon "facebook-square"
+          %li
+            = link_to "#", target: "_blank", class: "share-btn" do
+              = fa_icon "twitter-square"
+          %li
+            = link_to "#", target: "_blank", class: "share-btn" do
+              = fa_icon "pinterest-square"
+= render 'items/footer'
