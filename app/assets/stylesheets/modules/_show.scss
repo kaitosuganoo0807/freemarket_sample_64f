@@ -273,6 +273,10 @@
       color: #0099e8;
       a {
         color: #0099e8;
+        &:hover {
+          opacity: 0.7;
+          text-decoration: underline;
+        }
       }
       .next-product.items-link_to {
         float: right;
