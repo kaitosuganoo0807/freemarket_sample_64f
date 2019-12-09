@@ -1,1 +1,8 @@
-@import "a"
+@import "./modules/header";
+@import "./reset";
+@import "./modules/footer";
+@import "./modules/sell-btn";
+@import "font-awesome";
+@import "./modules/index";
+@import "./modules/slick";
+@import "./modules/show";
