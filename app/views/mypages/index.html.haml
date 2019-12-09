@@ -1,0 +1,52 @@
+= render 'items/header'
+
+.main-content
+  %section.my-maine
+    = render 'mypages/sidebar'
+    .my-page
+      .my-page__user
+        = image_tag "https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1326854", class:"bg-img"
+        .my-page__user__icon
+          %a.move__my-page
+            %figure
+              = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", class:"user-img"
+            %h2.bold
+              test
+            .my-page__user__icon__number
+              .my-page__user__icon__number__status-left
+                評価
+                %span.my-page__user__icon__number__status-left__number
+                  0
+              .my-page__user__icon__number__status-right
+                出品数
+                %span.my-page__user__icon__number__status-right__number
+                  0
+        .my-page__notice
+          %ul.my-page__notice__tabs
+            %li.active
+              %h3
+                = link_to "お知らせ", "#", class: "notice"
+            %li
+              %h3
+                = link_to "やることリスト", "#", class: "notice-active"
+          .my-page__notice__tabs__content
+            .my-page__notice__tabs__content__display
+              %ul.mypage-item-list.tab-pane.active{id: ""}
+                %li.mypage-item-not-found.bold 現在、お知らせはありません
+            =image_tag "/logo_gray.svg", class:"logo-gray"
+        .my-page__goods
+          %h2.my-page__goods__purchase 購入した商品
+          %ul.my-page__goods__tabs
+            %li.active
+              %h3
+                = link_to "取引中", "#", class: "notice"
+            %li
+              %h3
+                = link_to "過去の取引", "#", class: "notice-active"
+          .my-page__goods__content
+            .my-page__goods__content__tab
+              %ul.mypage-item-list.tab-pane.active{id: ""}
+                %li.mypage-item-not-found.bold 取引中の商品がありません
+            = image_tag "/logo_gray.svg", class:"logo-gray"
+= render 'items/sell-btn'
+= render 'items/footer'
