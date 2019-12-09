@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root "a#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root to: "items#index"
+  
+  # 仮置き
+  get 'items/show', to: 'items#show'
 end
