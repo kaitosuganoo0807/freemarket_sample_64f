@@ -1,50 +1,5 @@
 = render 'items/header'
 
--# .mypage-main-content
--#   = render 'mypages/sidebar'
--#   .a-right-content
--#     .a-right-content__block#back-img.middle-center
--#       = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", alt: 'user-icon', class: "user-icon", width:"60px",height:"60px"
--#       .a-right-content__block__user-name.bold test
--#       .a-right-content__block__user-about
--#         %p.a-right-content__block__review 評価
--#         %span.bold 0
--#         %p.a-right-content__block__exhibit 出品数
--#         %span.bold 0
--#     .a-right-content__block
--#       %ul.a-right-content__block__tabs.back-gray
--#         %li.active
--#           %h4
--#             = link_to "お知らせ", root_path,class:"middle-center bold mypage-center"
--#         %li
--#           %h4
--#             = link_to "やることリスト", root_path,class:"middle-center bold mypage-center"
--#       %ul.a-right-content__block__object
--#         %li
--#           = link_to root_path do
--#             .a-right-content__block__object__link-box
--#               =image_tag "/logo_red.svg", alt: "block-img",class: "right-content__block__object__link-box__img",width:"47.99px",height:"47.99px"
--#               .a-right-content__block__object__link-box__body
--#                 .a-right-content__block__object__link-box__body--text 2,000円分のポイントが必ずもらえるキャンペーン実施中！
--#                 .a-right-content__block__object__link-box__body--time
--#                   = fa_icon 'clock-o', class: 'icon'
--#                   .a-right-content__block__object__link-box__body--time--date 1日前
--#               %i.fa.fa-angle-right.fa-2x
--#         = link_to root_path do
--#           %li
--#             .a-right-content__block__object__link-box
--#               .a-right-content__block__object__link-box--string.back-gray.middle-center 一覧を見る
--#     .a-right-content__block
--#       %h4.a-right-content__block__title.middle.bold.back-silver 購入した商品
--#       %ul.a-right-content__block__tabs.back-gray
--#         %li.active
--#           %h4.mypage-transactions
--#             = link_to "取引中", root_path,class:"middle-center bold mypage-center"
--#         %li
--#           %h4
--#             = link_to "過去の取引", root_path,class:"middle-center bold mypage-center"
--#       %ul.a-right-content__block__object
-
 .main-content
   %section.my-maine
     = render 'mypages/sidebar'
@@ -70,12 +25,10 @@
           %ul.my-page__notice__tabs
             %li.active
               %h3
-                %a.notice{href:""}
-                  お知らせ
+                = link_to "お知らせ", "#", class: "notice"
             %li
               %h3
-                %a.notice-active{href:""}
-                  やることリスト
+                = link_to "やることリスト", "#", class: "notice-active"
           .my-page__notice__tabs__content
             .my-page__notice__tabs__content__display
               %ul.mypage-item-list.tab-pane.active{id: ""}
@@ -86,12 +39,10 @@
           %ul.my-page__goods__tabs
             %li.active
               %h3
-                %a.notice{href: ""}
-                  取引中
+                = link_to "取引中", "#", class: "notice"
             %li
               %h3
-                %a.notice-active{href: ""}
-                  過去の取引
+                = link_to "過去の取引", "#", class: "notice-active"
           .my-page__goods__content
             .my-page__goods__content__tab
               %ul.mypage-item-list.tab-pane.active{id: ""}
