@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth, if: :production?
-  before_action :authenticate_user!
-  protect_from_forgery with: :exception
+  # before_action :basic_auth, if: :production?
+  # before_action :authenticate_user!
+  # protect_from_forgery with: :exception
 
   protected
   def configure_permitted_parameters
