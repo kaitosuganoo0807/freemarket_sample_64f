@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post 'authentication'
       post 'address'
       post 'credit'
+      post 'completed'
     end
   end
 end
