@@ -5,7 +5,7 @@
       %h2.l-single-head__registration 会員情報入力
       .l-single-head__registration__form
         .l-single-content
-          = form_with local: true do |f|
+          = form_with local: true, url: authentication_signup_index_path do |f|
             .l-single-content__nickname
               = f.label :nickname, 'ニックネーム'
               %span.hissu 必須
