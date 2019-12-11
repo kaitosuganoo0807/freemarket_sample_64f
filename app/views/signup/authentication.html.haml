@@ -22,7 +22,7 @@
           .progress-bar2__active__status__complete
   .signup-main2
     .signup-main2__head 電話番号の確認
-    = form_with local: true do |f|
+    = form_with local: true, url: address_signup_index_path do |f|
       .a-2
         .signup-main2__form
           .signup-main2__form__phone-number

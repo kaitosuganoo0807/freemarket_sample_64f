@@ -7,4 +7,10 @@ class SignupController < ApplicationController
 
   def authentication
   end
+
+  def address
+  end
+
+  def credit
+  end
 end

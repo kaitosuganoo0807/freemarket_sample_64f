@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     collection do
       get 'registration'
       post 'authentication'
+      post 'address'
+      post 'credit'
     end
   end
 end
