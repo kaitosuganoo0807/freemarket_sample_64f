@@ -7,4 +7,13 @@ Rails.application.routes.draw do
 
   # 仮置き
   get 'items/show', to: 'items#show'
+  resources :signup, only: :index do
+    collection do
+      get 'registration'
+      post 'authentication'
+      post 'address'
+      post 'credit'
+      post 'completed'
+    end
+  end
 end
