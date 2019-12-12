@@ -1,0 +1,184 @@
+.single-header {
+  height: 128px;
+  text-align: center;
+  &__logo {
+    margin: 40px 0 0;
+    display: inline-block;
+    height: 49px;
+    line-height: 49px;
+  }
+  .progress-bar {
+    background-color: #f5f5f5;
+    padding: 40px 0 0 44px;
+    border: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    text-align: center;
+    .progress-bar__active {
+      font-weight: 600;
+      color: #ea352d;
+      margin: 0 40px 0 0;
+      min-width: 60px;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      font-size: 12px;
+      &__status {
+        background-color: #ea352d;
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        border-radius: 50%;
+        &::after {
+          content: '';
+          left: 50%;
+          position: absolute;
+          bottom: 5px;
+          z-index: -1;
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #ccc;
+        }
+      }
+      &__phone-number {
+        margin: 0 40px 0 0;
+        font-size: 12px;
+        color: #888;
+        display: inline-block;
+        z-index: 1;
+        position: relative;
+        .progress-bar__active__status__phone-number { 
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          border-radius: 50%;
+          background: #ccc;
+          &::before {
+            right: 50%;
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+          &::after {
+            content: '';
+            left: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+      }
+      &__address {
+        margin: 0 40px 0 0;
+        font-size: 12px;
+        color: #888;
+        display: inline-block;
+        z-index: 1;
+        position: relative;
+        .progress-bar__active__status__address {
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          border-radius: 50%;
+          background: #ccc;
+          &::before {
+            right: 50%;
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+          &::after {
+            content: '';
+            left: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+      }
+      &__payment {
+        margin: 0 40px 0 0;
+        font-size: 12px;
+        color: #888;
+        display: inline-block;
+        z-index: 1;
+        position: relative;
+        .progress-bar__active__status__payment {
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          border-radius: 50%;
+          background: #ccc;
+          &::before {
+            right: 50%;
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+          &::after {
+            content: '';
+            left: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+      }
+      &__complete {
+        margin: 0 40px 0 0;
+        font-size: 12px;
+        color: #888;
+        display: inline-block;
+        z-index: 1;
+        position: relative;
+        .progress-bar__active__status__complete {
+          width: 12px;
+          height: 12px;
+          margin: 8px auto 0;
+          border-radius: 50%;
+          background: #ccc;
+          &::before {
+            right: 50%;
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+      }
+    }
+  }
+}

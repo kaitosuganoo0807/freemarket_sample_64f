@@ -1,0 +1,123 @@
+.signup-index-main {
+  background-color: #fff;
+  height: 400px;
+  margin: 0 auto;
+  width: 700px;
+  &__head {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 22px;
+    font-weight: 550;
+    line-height: 33px;
+    padding: 32px;
+    text-align: center;
+    margin: 0 auto 0;
+  }
+  .signup-submit-button-form {
+    height: 287px;
+    margin: 0 auto;
+    padding: 40px 40px 64px;
+    width: 700px;
+    .signup-index-mail-box {
+      height: 50px;
+      margin: 0 auto 16px;
+      width: 620px;
+      display: inline-flex;
+      a {
+        background-color: #ea352d;
+        border: 1px solid;
+        border-radius: 4px;
+        color: #fff;
+        width: 343px;
+        font-size: 14px;
+        height: 50px;
+        text-align: center;
+        margin: 0 auto;
+        line-height: 50px;
+        display: block;
+        padding-right: 16px;
+        &:hover {
+          opacity: 0.7;
+          transition: all ease-out .3s;
+        }
+        i {
+          float: left;
+          padding-left: 11px;
+          bottom: 25px;
+          font-size: 20px;
+          color: #fff;
+          padding-top: 7px;
+        }
+      }
+    }
+    .signup-index-facebook-box {
+      height: 50px;
+      margin: 0 auto 16px;
+      width: 620px;
+      display: inline-flex;
+      a{
+        background-color: #385185;
+        border: 1px solid;
+        border-radius: 4px;
+        color: #FFFFFF;
+        font-size: 14px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 343px;
+        margin: 0 auto;
+        display:block;
+        padding-right: 16px;
+        &:hover {
+          opacity: 0.7;
+          transition: all ease-out .3s;
+        }
+        i {
+          float: left;
+          padding-left: 10px;
+          padding-top: 7px;
+          bottom: 25px;
+          font-size: 25px;
+          color: #fff;
+        }
+      }
+    }
+    .signup-index-google-box {
+      height: 50px;
+      margin: 0 auto 16px;
+      width: 620px;
+      display: inline-flex;
+      a {
+        background-color: #FFFFFF;
+        border: 1px solid;
+        border-color: #979797;
+        border-radius: 4px;
+        color: #333333;
+        font-size: 14px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 343px;
+        margin: 0 auto;
+        display:block;
+        padding-right: 16px;
+        &:hover {
+          opacity: 0.7;
+          transition: all ease-out .3s;
+        }
+        .main__conect__lists__google__btn {
+          color: #333;
+        }
+        .main__conect__lists__google__icon {
+          background-image: url("https://i.gyazo.com/1e79bd9bde1dd4388dea6da9231efdc4.png");
+          background-size: cover;
+          height: 30px;
+          width: 30px;
+          position: relative;
+          bottom: 40px;
+          left: 15px;
+        }
+      }
+    }
+  }
+}
