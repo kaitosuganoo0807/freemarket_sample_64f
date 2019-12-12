@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
 
   # 仮置き
+  get '/mypages/card', to: 'mypages#card'
+  get '/mypages/card/new', to: 'mypages#card_new'
   get 'card/confirmation', to:'card#confirmation'
   get 'card/completed', to: 'card#completed'
   get 'mypages/destroy', to: 'mypages#destroy'
