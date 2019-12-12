@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new]
 
   # 仮置き
+  get 'card/confirmation', to:'card#confirmation'
   get 'items/show', to: 'items#show'
   resources :signup, only: :index do
     collection do
