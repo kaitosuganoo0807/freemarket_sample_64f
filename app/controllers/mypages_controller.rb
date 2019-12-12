@@ -4,4 +4,11 @@ class MypagesController < ApplicationController
 
   def destroy
   end
+
+  def card
+  end
+
+  def card_new
+  end
+
 end
