@@ -1,0 +1,22 @@
+.logout-content {
+  height: 100%;
+  width: 100%;
+}
+
+.my-maine-box {
+  background-color: white;
+  height: 200px;
+  width: 700px;
+  text-align: center;
+  line-height: 47px;
+  font-size: 14px;
+  color: white;
+  
+  .my-maine-box-box {
+    height: 47px;
+    width: 320px;
+    background-color: #ea352d;
+    margin: auto;
+    margin-top: 62.5px;
+  }
+}
