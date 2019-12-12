@@ -6,7 +6,7 @@
     .card-input-contents
       %h2
         クレジットカード情報入力
-      = form_with id: "charge-form", url: "/card", method: :post, local: true do |f|
+      = form_with id: "charge-form", url: "/", method: :get, local: true do |f|
         .card-input-content
           .form-group
             %label
@@ -56,6 +56,6 @@
                 ?
               %span
                 カード背面の番号とは？
-          = f.submit "追加する", '/', class:"add-btn",id: "token_submit", type: "submit"
+          = f.submit "追加する", class:"add-btn",id: "token_submit", type: "submit"
 = render 'items/sell-btn'
 = render 'items/footer'
