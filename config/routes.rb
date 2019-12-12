@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # 仮置き
   get 'card/confirmation', to:'card#confirmation'
+  get 'card/completed', to: 'card#completed'
   get 'mypages/destroy', to: 'mypages#destroy'
   get 'items/show', to: 'items#show'
   resources :signup, only: :index do
