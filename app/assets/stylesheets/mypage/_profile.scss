@@ -1,0 +1,78 @@
+.right-profile {
+  height: 568px;
+  width: 700px;
+  background-color: #FFFFFF;
+  .right-container {
+    &__head {
+      font-size: 24px;
+      font-weight: 700;
+      padding: 7px 24px;
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+    }
+  }
+  .setting-profile-icon {
+    padding: 72px 16px 24px;
+    background-image:url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1326854");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    font-size: 0;
+    .user-icon {
+      margin: 0;
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+    figure {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: middle;
+      margin-right: 0;
+    }
+    .input-default {
+      width: 220px;
+      height: 40px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      line-height: 1.5px;
+      font-size: 16px;
+      margin: 0 0 0 8px;
+      vertical-align: middle;
+      background: #fff;
+    }
+  }
+  .setting-profile-content {
+    height: 362px;
+    padding: 40px 16px;
+    background: #fff;
+    .textarea-default {
+      min-height: 216px;
+      display: block;
+      width: 645px;
+      max-width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .btn-default.btn-red {
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      margin: 30px 0 0;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+      cursor: pointer;
+      text-align: center;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

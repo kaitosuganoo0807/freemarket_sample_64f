@@ -11,4 +11,9 @@ class MypagesController < ApplicationController
   def card_new
   end
 
+  def profile
+  end
+
+  def identification
+  end
 end
