@@ -23,11 +23,11 @@ class ItemsController < ApplicationController
   def show
   end
 
-  private
 
   def item_params
-    params.require(:item).permit(:name, :deteil, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer)
+    params.require(:item).permit(:name, :deteil, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image])
   end
+  private
 
   def create_items_instance
     @item = Item.new
