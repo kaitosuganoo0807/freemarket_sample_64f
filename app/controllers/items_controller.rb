@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+    @category = MainCategoty.all.includes(sub_categories: :sub2_categories)
   end
 
   def new
@@ -21,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @category = MainCategoty.all.includes(sub_categories: :sub2_categories)
   end
 
 
