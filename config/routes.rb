@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :mypages, only: :index
   resources :users, only: [:edit, :update, :destroy]
-  resources :items, only: [:index, :new, :create, :edit, :update]
+  resources :items do
+    resources :images do
+    end
+  end
 
   
 

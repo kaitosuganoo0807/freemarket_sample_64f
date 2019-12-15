@@ -1,158 +1,103 @@
-%body
-  = render 'items/sub-header'
+.sell-wrap
+  .container
+    = link_to root_path do
+      = image_tag '/fmarket_logo_red.svg', class: "sell-wrap__logo"
+    = form_with(model: Item, local: true) do |f|
+      .sell-box
+        %h2 商品の情報を入力
+        .sell-box__img.sell-box__section
+          %h3
+            出品画像
+            %span 必須
+          %p 最大10枚までアップロードできます
+          .drop-zone
+            %label.sell-box__img--input
+              %p
+                ドラッグアンドドロップ
+                %br
+                またはクリックしてファイルをアップロード
+                = f.fields_for :images do |i|
+                  = i.file_field :image, multiple: true, id: "sell-img", name: "images[image][]"
 
-  .main-box
-    .main-box__head 商品の情報を入力
-    = form_for @item do |f|
-      .main-box__image
-        %h3 
-          出品情報 
-          %span.hissu 必須
-        %p 最大10枚までアップロードできます
-        = f.fields_for :images do |image|
-          .image-area
-            .image-area__preview
-              .image-area__preview__list
-                %ul
-                  %li.preview-image
-                    .figure
-
-                    .article
-                      %button.removePreviewBtn{type: 'button'}
-                        削除
-                      %button.edit-link{type: 'button'}
-                        編集
-            = image.label :image do
-              .image-area__input
-                %pre
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
-                = image.file_field :image, class: 'image-area__input--hidden fileField'
-      .main-box__name
-        .main-box__syouhinmei
-          = f.label :name do
+        .sell-box__info.sell-box__section
+          %h3
             商品名
             %span.hissu 必須
-          %div
-            = f.text_field :name,{class: 'input-text', placeholder: "商品名（必須40字まで）"}
-        .main-box__syouhinsetumei
-          = f.label :description do
-            商品の説明 
+          = f.text_field :name, class:"sell-box__info--input sell-box__info--name", placeholder: "商品名（必須40文字まで）", value: ""
+          %h3.sell-box__info--textarea
+            商品の説明
             %span.hissu 必須
-          = f.text_area :detail, {class: 'textarea', rouws:5 , placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-      .main-box__show.clear-fix
-        %h3.h3sub 商品の詳細
-        .main-box__showbox
-          .main-box__kategori
-            = f.label :category do
-              カテゴリー 
+          = f.text_area :description, class:"sell-box__info--input sell-box__info--description", rows: 6, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+        .sell-box__details.sell-box__section.sell-box__section2
+          .sell-box__details--left
+            %h3.text-gray 商品の詳細
+          .sell-box__details--right
+            %h4
+              カテゴリー
               %span.hissu 必須
-            %div
-              .select-box.parent
-                %select.select-default
-                  -# 仮置き
-                  %option{value: ""} ---
-                  %option{value: "1"} レディース
-                  %option{value: "2"} メンズ
-                  %option{value: "3"} ベビー・キッズ
-                  %option{value: "4"} インテリア・住まい・小物
-                  %option{value: "5"} 本・音楽・ゲーム
-                  %option{value: "6"} おもちゃ・ホビー・グッズ
-                  %option{value: "7"} コスメ・香水・美容
-                  %option{value: "8"} 家電・スマホ・カメラ
-                  %option{value: "9"} スポーツ・レジャー
-                  %option{value: "10"} ハンドメイド
-                  %option{value: "11"} チケット
-                  %option{value: "12"} 自動車・オートバイ
-                  %option{value: "13"} その他
-          .main-box__zyoutai
-            = f.label :item_status do
+            .select-wrap
+              = f.select :category, Item.categories.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
+            %h4
               商品の状態
               %span.hissu 必須
-            %div
-              .select-box
-                = f.select :state, Item.states.keys,{prompt: '---'}, class: 'select-default'
-      .main-box__haisou.clear-fix
-        %h3.h3sub 
-          配送について
-        = link_to "?", 'https://www.mercari.com/jp/help_center/article/68/', class:"round-icon"
-        .sell-form-box
-          .form-group
-            = f.label :delivery_fee do
+            .select-wrap
+              = f.select :state, Item.states.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
+
+        .sell-box__delivery.sell-box__section.sell-box__section2
+          .sell-box__delivery--left
+            %h3.text-gray 配送について
+          .sell-box__delivery--right
+            %h4
               配送料の負担
               %span.hissu 必須
-            %div
-              .select-box
-                = f.select :fee_payer, Item.fee_payers.keys,{prompt: '---'}, class: 'select-default'
-          .form-group
-            = f.label :delivery do
-              配送の方法
+            .select-wrap
+              = f.select :fee_payer, Item.fee_payers.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
+            %h4
+              発送の方法
               %span.hissu 必須
-            %div
-              .select-box
-                = f.select :delivery, Item.deliveries.keys,{prompt: '---'}, class: 'select-default'
-          .form-group
-            = f.label :prefecture do
+            .select-wrap
+              = f.select :delivery, Item.deliveries.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
+            %h4
               発送元の地域
-              %span.hissu必須
-            %div
-              .select-box
-                = f.select :city, Item.cities.keys,{prompt: '---'}, class: 'select-default'
-          .form-group
-            = f.label :delivery_status do
+              %span.hissu 必須
+            .select-wrap
+              = f.select :city, Item.cities.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
+            %h4
               発送までの日数
-              %span.hissu必須
-            %div
-              .select-box
-                = f.select :delivery_time, Item.delivery_times.keys,{prompt: '---'}, class: 'select-default'
-      .main-box__price
-        %h3.h3sub
-          販売価格(300〜9,999,999)
-        = link_to "?", 'https://www.mercari.com/jp/help_center/article/64/', class:"round-icon" 
-        .main-box__price__form
-          %ul
-            %li.first-list
-              .left
-                = f.label :price do
-                  価格
-                  %span.hissu 必須
-              .right
-                %div
-                  %p ¥
-                  = f.text_field :price,{placeholder: '例）300円', class: 'price-input'}
-            %li.clear-fix.fee-area
-              .p-left 
-                販売手数料(10%)
-              .p-right
-                %p.fee-area__tax-rate -
-            %li.clear-fix.profit-area
-              .p-left 
-                %p 販売利益
-              .p-right 
-                %p.profit-area__text -
-      .main-box__foot
-        .main-box__foot__text
-          %p
-            = link_to "" do
-              禁止されている出品
-            、
-            = link_to "" do
-              行為
-            を必ずご確認ください。
-          %p  
-            またブランド品でシリアルナンバー等がある場合はご記載ください。
-            = link_to '' do
-              偽ブランドの販売
-            は犯罪であり処罰される可能性があります。
-          %p
-            また、出品をもちまして
-            = link_to '' do
-              加盟店規約
-            に同意したことになります。
-        %button{type: 'submit', class: 'submitBtn'}
-          出品する
+              %span.hissu 必須
+            .select-wrap
+              = f.select :delivery_time, Item.delivery_times.keys,{prompt: '---'}, class: "details"
+              = fa_icon 'chevron-down'
 
-        = link_to root_path do
-          %button{type: 'button'}
-            もどる
-  = render 'items/sub-footer'
+        .sell-box__price.sell-box__section.sell-box__section2
+          .sell-box__price--left
+            %h3.text-gray 販売価格(300〜9,999,99
+            9)
+          .sell-box__price--right
+            .price-flex
+              %h4
+                価格
+                %span.hissu 必須
+              = f.number_field :price, class:"price-flex__input", placeholder: "例）300"
+            .price-flex
+              %p.fee 販売手数料（10%）
+              %p.result-fee -
+            .price-flex
+              %p.profit 販売利益
+              %p.result-profit -
+        .sell-box__confirmation.sell-box__section
+          %p 禁止されている出品、行為を必ずご確認ください。
+          %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+          %p また、出品をもちまして加盟店規約に同意したことになります。
+          = f.submit "出品する", class: "sell-box__confirmation--exhibit-btn"
+
+          = link_to root_path do
+            .sell-box__confirmation--back-btn
+              もどる
+    = render 'items/sub-footer'
