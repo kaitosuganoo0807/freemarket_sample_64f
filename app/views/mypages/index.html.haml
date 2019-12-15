@@ -1,5 +1,6 @@
-= render 'items/header'
-
+= render 'shared/header'
+- breadcrumb :mypage
+= render "shared/breadcrumb"
 .main-content
   %section.my-maine
     = render 'mypages/sidebar'
@@ -48,5 +49,5 @@
               %ul.mypage-item-list.tab-pane.active{id: ""}
                 %li.mypage-item-not-found.bold 取引中の商品がありません
             = image_tag "/logo_gray.svg", class:"logo-gray"
-= render 'items/sell-btn'
-= render 'items/footer'
+= render 'shared/sell-btn'
+= render 'shared/footer'
