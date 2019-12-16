@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item.save
       params[:images][:image].each do |image|
         @item.images.create!(image: image, item_id: @item.id)
@@ -26,16 +27,17 @@ class ItemsController < ApplicationController
   end
 
 
+  
+
   def item_params
     params.require(:item).permit(:name, :deteil, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image])
   end
   private
+    def create_items_instance
+      @item = Item.new
+    end
 
-  def create_items_instance
-    @item = Item.new
-  end
-
-  def set_items
-    @item = Item.find(params[:id])
-  end
+    def set_items
+      @item = Item.find(params[:id])
+    end
 end
