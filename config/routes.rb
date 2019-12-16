@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   resources :signup, only: :index do
     collection do
       get 'registration'
-      post 'authentication'
-      post 'address'
+      post 'registration_validates'
+      get 'authentication'
+      post 'authentication_create'
+      get 'address'
+      post 'address_add'
       post 'credit'
       post 'completed'
     end
