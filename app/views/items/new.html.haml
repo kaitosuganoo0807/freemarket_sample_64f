@@ -2,7 +2,7 @@
   .container
     = link_to root_path do
       = image_tag '/fmarket_logo_red.svg', class: "sell-wrap__logo"
-    = form_with(model: Item, local: true) do |f|
+    = form_with(model: Item, local: true)  do |f|
       .sell-box
         %h2 商品の情報を入力
         .sell-box__img.sell-box__section
