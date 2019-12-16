@@ -45,10 +45,7 @@
           %p
             都道府県
           %span.hissu 必須
-        %select.signup3__prefecture
-          -# 仮置き
-          %option{value: ""} ---
-          %option{value: "1"} 東京都
+        = f.select :prefecture, Address.prefectures.keys,{prompt: '---'}, id:"signin3__prefecture"
         .signup3__form
           %p
             市区町村
