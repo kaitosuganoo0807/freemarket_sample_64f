@@ -19,8 +19,8 @@ Rails.application.routes.draw do
       post 'authentication_create'
       get 'address'
       post 'address_add'
-      post 'credit'
-      post 'completed'
+      get 'credit'
+      get 'completed'
     end
   end
 end

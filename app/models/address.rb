@@ -16,7 +16,4 @@ class Address < ApplicationRecord
   validates :city, presence: true, length: { maximum: 50 }
   validates :street, presence: true, length: { maximum: 100 }
   validates :building, length: { maximum: 100 }
-  validates :prefecture, presence: true
-  validates :phone, presence: true
-  validates :phone, format: { with: /\A\d{10}$|^\d{11}\z/, message: "登録できません" }, allow_blank: true # 10桁か11桁の数字の文字列
 end

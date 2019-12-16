@@ -15,7 +15,7 @@ class SignupController < ApplicationController
     
 
     @user.valid?
-   
+  
     skip_phone_validate(@user.errors) 
     
     if @user.errors.messages.blank? && @user.errors.details.blank?
@@ -50,14 +50,14 @@ class SignupController < ApplicationController
   end
 
   def address
-    @address = Address.new(user_id: user.id)
+    @address = Address.new
   end
 
   def address_add
     @address = set_address(address_params)
-    binding.pry
+    
     @address.valid?
-    binding.pry
+    
     if @address.errors.messages.blank? && @address.errors.details.blank?
       create_session_address(address_params)
       
@@ -66,10 +66,7 @@ class SignupController < ApplicationController
     end
 
     if @address.save
-      
-      # sign_in Address.find(@address.id) unless user_signed_in?
-      # delete_session
-      redirect_to credit_signup_index_path
+      redirect_to completed_signup_index_path
     else
       render :address_add
     end
@@ -185,7 +182,8 @@ class SignupController < ApplicationController
         :street,
         :building,
         :phone,
-        :user_id)
+        :user_id
+      ).merge(user_id: current_user.id)
     end
 
     def set_address(address_params)
@@ -204,32 +202,18 @@ class SignupController < ApplicationController
       )
     end
 
-    # def create_session_address(address_params)
-    #     session[:user] = address_params[:user],
-    #     session[:post_code] = address_params[:post_code],
-    #     session[:prefecture] = address_params[:prefecture],
-    #     session[:city] = address_params[:city],
-    #     session[:surname] = address_params[:surname],
-    #     session[:first_name] = address_params[:first_name],
-    #     session[:surname_kana] = address_params[:surname_kana],
-    #     session[:first_name_kana] = address_params[:first_name_kana],
-    #     session[:phone] = address_params[:phone],
-    #     session[:street] = address_params[:street],
-    #     session[:building] = address_params[:building]
-    # end
-
-
-    # # user
-    # # post_code
-    # # prefecture
-    # # city
-    # # street
-    # # building	
-    # # phone	
-    # # surname
-    # # first_name
-    # # surname_kana
-    # # first_name_kana
-
+    def create_session_address(address_params)
+        session[:user_id] = address_params[:user_id],
+        session[:post_code] = address_params[:post_code],
+        session[:prefecture] = address_params[:prefecture],
+        session[:city] = address_params[:city],
+        session[:surname] = address_params[:surname],
+        session[:first_name] = address_params[:first_name],
+        session[:surname_kana] = address_params[:surname_kana],
+        session[:first_name_kana] = address_params[:first_name_kana],
+        session[:phone] = address_params[:phone],
+        session[:street] = address_params[:street],
+        session[:building] = address_params[:building]
+    end
 
 end
