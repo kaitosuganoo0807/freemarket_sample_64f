@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_025811) do
+ActiveRecord::Schema.define(version: 2019_12_16_113740) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "post_code", null: false
-    t.integer "prefecture", null: false
+    t.integer "prefecture"
     t.string "city", null: false
     t.string "street", null: false
     t.string "building"
@@ -29,27 +29,18 @@ ActiveRecord::Schema.define(version: 2019_12_16_025811) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-ActiveRecord::Schema.define(version: 2019_12_16_042925) do
-
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id"
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "image", null: false
+    t.text "image"
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "name", null: false
-    t.integer "category"
+    t.integer "category", null: false
     t.integer "price", null: false
     t.integer "status", default: 0, null: false
     t.integer "state", default: 0, null: false
@@ -67,6 +58,15 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "sub2_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
     t.string "first_name", default: ""
     t.string "surname_kana", default: ""
     t.string "first_name_kana", default: ""
-    t.integer "phone"
+    t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "birthday"
@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "sns_credentials", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "sub2_categories", "sub_categories"
   add_foreign_key "sub_categories", "main_categoties"
 end
