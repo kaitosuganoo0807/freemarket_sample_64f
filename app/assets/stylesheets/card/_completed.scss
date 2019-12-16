@@ -1,0 +1,64 @@
+.buy-main {
+  &__box {
+    width: 700px;
+    background-color: #fff;
+    margin: 0 auto;
+    .buy-content {
+      display: block;
+      &__header {
+        padding: 16px;
+        font-size: 22px;
+        text-align: center;
+        font-weight: bold;
+      }
+      &__completed-message__box {
+        width: 100%;
+        height: 110px;
+        background: #fff6de;
+        text-align: center;
+        vertical-align: center;
+      }
+      &__completed-message_1 {
+        background: #fff6de;
+        height: 55px;
+        color: red;
+        padding: 30px 0;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        vertical-align: bottom;
+      }
+      &__completed-message_2 {
+        background: #fff6de;
+        height: 55px;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.buy-product-image {
+  display: flex;
+}
+
+.btn-default-z {
+  width: 100%;
+  display: block;
+  line-height: 48px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  padding: 0;
+  height: 48px;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  margin-top: 24px;
+  transition-duration: 0.3s;
+  &:hover {
+    opacity: 0.7;
+  }
+}

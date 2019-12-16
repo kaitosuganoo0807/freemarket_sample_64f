@@ -1,0 +1,59 @@
+= render 'shared/header'
+- breadcrumb :identification
+= render "shared/breadcrumb"
+
+.main-content
+  .my-maine
+    = render 'mypages/sidebar'
+    .right-identity-information
+      %section.right-container
+        %h2.right-container__head 本人情報の登録
+        = form_with class: 'right-container__inner', url: "/", method: :get, local: true do |f|
+          .form-group__first
+            %p
+              お客さまの本人情報をご登録ください。
+              %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.text-right
+              = link_to 'https://www.mercari.com/jp/help_center/article/495/', target: "_blank" do
+                本人確認書類のアップロードについて
+                = fa_icon 'chevron-right'
+          .form-group
+            %label お名前
+            %br
+            山田 太郎
+          .form-group
+            %label お名前カナ
+          .form-group
+            %label 生年月日
+            %br
+            1996/08/07
+          .form-group
+            %label 郵便番号
+            %span.form-arbitrary 任意
+            = f.text_field :postal_code, class: "input-default",  placeholder: "例) 1234567"
+          .form-group
+            %label 都道府県
+            %span.form-arbitrary 任意
+            .select-wrap
+              = f.select :prefecture,{prompt: '---',class:"select-wrap"}
+              =fa_icon 'chevron-down'
+          .form-group
+            %label 市区町村
+            %span.form-arbitrary 任意
+            = f.text_field :city, class: "input-default",  placeholder: "例) 1234567"
+          .form-group
+            %label 番地
+            %span.form-arbitrary 任意
+            = f.text_field :street, class: "input-default",  placeholder: "例) 1234567"
+          .form-group
+            %label 建物名
+            %span.form-arbitrary 任意
+            = f.text_field :building, class: "input-default",  placeholder: "例) 1234567"
+          = f.submit "変更する", class:"btn-default btn-red form-group"
+          .form-group.text-right
+            = link_to 'https://www.mercari.com/jp/help_center/article/423/', target: "_blank" do
+              本人確認書類の登録について
+              = fa_icon 'chevron-right'
+= render 'shared/sell-btn'
+= render 'shared/footer'

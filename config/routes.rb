@@ -3,9 +3,15 @@ Rails.application.routes.draw do
   root to: "items#index"
   resources :mypages, only: :index
   resources :users, only: [:edit, :update, :destroy]
-  resources :items, only: [:index, :new]
+  
+  resources :items do
+    resources :images do
+    end
+  end
+
   
 
+  # 仮置き
   get '/mypages/identification', to: 'mypages#identification'
   get '/mypages/profile', to: 'mypages#profile'
   get '/mypages/card', to: 'mypages#card'

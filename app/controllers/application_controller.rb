@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit(:sign_up, keys: %i[nickname surname_name first_name surname_name_kana first_name_kana birthday phone])
   end
 
+
   private
 
   def production?

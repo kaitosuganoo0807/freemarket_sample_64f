@@ -88,7 +88,7 @@
 ## sub_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|main_category_id|references|null:false, foreign_key: true|
+|main_category|references|null:false, foreign_key: true|
 |name|string|null:false|
 ### Association
 - belongs_to :main_category
@@ -98,7 +98,7 @@
 ## sub2_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|sub_category_id|references|null:false, foreign_key: true|
+|sub_category|references|null:false, foreign_key: true|
 |name|string|null:false|
 ### Association
 - belongs_to :sub_category

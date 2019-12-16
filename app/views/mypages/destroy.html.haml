@@ -1,10 +1,11 @@
-= render 'items/header'
-
+= render 'shared/header'
+- breadcrumb :destroy
+= render "shared/breadcrumb"
 .logout-content
   %section.my-maine
     = render 'mypages/sidebar'
     .my-maine-box
       .my-maine-box-box ログアウト
     
-= render 'items/sell-btn'
-= render 'items/footer'
+= render 'shared/sell-btn'
+= render 'shared/footer'

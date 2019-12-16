@@ -1,0 +1,52 @@
+%body
+  = render 'items/sub-header'
+  .buy-main
+    .buy-main__box
+      .buy-content
+        %h2.buy-content__completed-message_1
+          = fa_icon 'clock'
+          発送をお待ちください
+          %h2.buy-content__completed-message_2
+            出品者からの発送通知をお待ちください
+            %h2.buy-content__header
+              購入が完了しました
+        .buy-content__product
+          .buy-content__product__inner
+            .buy-product-main
+              .buy-product-image
+                = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s"), height: "80px" , width: "80px"
+                .buy-product-name  
+                  test
+                  %p.buy-price
+                    ¥
+                    2,000
+                    %span 送料込み
+            %form.buy-form
+        .buy-content__user-info
+          .buy-content__user-info__inner
+            %h3 配送先
+            .user-info-text
+              〒123-4567
+              %br
+              渋谷区神南1-18-2
+              %br
+              山田 太郎
+            .user-info-fix
+              = link_to "#" do
+                変更する
+                %span 
+                = fa_icon 'chevron-right'
+        .buy-content__user-info
+          .buy-content__user-info__inner
+            %h3 支払方法
+            .user-info-text
+              = "**** **** ****"
+              %br
+            .user-info-fix
+              = link_to "#" do
+                変更する
+                %span
+                = fa_icon 'chevron-right'
+        .buy-content__btn
+          = link_to "トップページに戻る", '/' , class:"btn-default-z"
+  = render 'items/sub-footer'
