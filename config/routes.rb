@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "items#index"
   resources :mypages, only: :index
   resources :users, only: [:edit, :update, :destroy]
+  
   resources :items do
     resources :images do
     end
@@ -22,10 +23,13 @@ Rails.application.routes.draw do
   resources :signup, only: :index do
     collection do
       get 'registration'
-      post 'authentication'
-      post 'address'
-      post 'credit'
-      post 'completed'
+      post 'registration_validates'
+      get 'authentication'
+      post 'authentication_create'
+      get 'address'
+      post 'address_add'
+      get 'credit'
+      get 'completed'
     end
   end
 end

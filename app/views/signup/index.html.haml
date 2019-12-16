@@ -10,13 +10,15 @@
           %i
             = fa_icon "envelope-o"
       .signup-index-facebook-box
-        = link_to do
+        = link_to user_facebook_omniauth_authorize_path, method: :post do
           Facebookで登録する
           %i
             = fa_icon "facebook-square"
+
       .signup-index-google-box
-        = link_to do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
           .main__conect__lists__google__btn
             Googleで登録する
           .main__conect__lists__google__icon
+          
   = render 'items/sub-footer'
