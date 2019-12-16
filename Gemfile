@@ -48,6 +48,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'dotenv-rails'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -86,3 +87,4 @@ gem 'fog-aws'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
