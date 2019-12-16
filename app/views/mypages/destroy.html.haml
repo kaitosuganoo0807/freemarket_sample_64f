@@ -1,11 +1,12 @@
 = render 'shared/header'
 - breadcrumb :destroy
 = render "shared/breadcrumb"
-.logout-content
-  %section.my-maine
+.main-content
+  .my-maine
     = render 'mypages/sidebar'
-    .my-maine-box
-      .my-maine-box-box ログアウト
+    .logout-content
+      .logout-btn
+        = link_to "ログアウト", destroy_user_session_path, method: :delete 
     
 = render 'shared/sell-btn'
 = render 'shared/footer'
