@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_042925) do
+ActiveRecord::Schema.define(version: 2019_12_16_113740) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item_id", null: false
+    t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "image"
+    t.text "image", null: false
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
@@ -91,11 +91,11 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "nickname", default: "", null: false
-    t.string "surname", default: ""
-    t.string "first_name", default: ""
-    t.string "surname_kana", default: ""
-    t.string "first_name_kana", default: ""
+    t.string "nickname", null: false
+    t.string "surname", null: false
+    t.string "first_name", null: false
+    t.string "surname_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

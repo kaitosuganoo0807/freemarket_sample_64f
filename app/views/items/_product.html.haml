@@ -1,11 +1,22 @@
-%section.new__items
-  .new__items__container
-    =link_to items_show_path do
-      .new__items__container__box
-        %figure
-          = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s"), class:'new__items__container__box-item_phot'
-          %p.new__items__container__box-price
-            ¥2,000
-            .new__items__container__box__item_body
-              %h3 
-                test
+.category-wrapper
+  .category-all
+    .category-type
+      .category-type__title
+        %h3 新着アイテム
+        = link_to "#" do
+          もっと見る >
+      %ul.category-type__contents
+        - @items.each do |item|
+          = link_to item_path(item.id) do
+            %li.category-type__contents__item
+              -# - if item.order != nil 
+              -#   .sold 
+              -#   .sold-c SOLD
+              .category-type__contents__item__image
+                - images = item.images
+                - image = images[0]
+                = image_tag "#{image.image_url}"
+              .category-type__contents__item__name
+                = item.name
+              .category-type__contents__item__price
+                = "¥#{item.price.to_s(:delimited)}"

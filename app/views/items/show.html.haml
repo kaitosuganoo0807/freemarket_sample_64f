@@ -4,25 +4,34 @@
   %section.product-show-product-box-container
     %h1
       .product-name
-        test
+        = @item.name
     .product-main-content
       .product-photo
         -# メイン画像
         .image
-          = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s")
+          = image_tag @image.image.to_s, size: "300x300"
         -# サムネイル画像
         .owl-dot
-          .owl-dot__product.current
-            .owl-dot__product__box
-              = image_tag ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_O877pBxcM1j9bQgBJ7Xoge8Bc8TFzR89lq8R6rdmcaHzQOhUig&s"), class: "image-sub"
+          - @item.images.each.with_index do |image, index|
+            - if image.present?
+              .owl-dot__product.current
+                .owl-dot__product__box
+                  = image_tag image.image_url, class: "image-sub"
+            - else
+              .owl-dot__product
+                .owl-dot__product__box
+                  = image_tag image.image, class: "image-sub"
+            - if @item.images.length > 5
+              - for i in 1..(10 - @item.images.length)
+                .owl-dot__dummy
       %table.product-detail-table
         %tbody
           %tr
           %th 出品者
           %td
-            =link_to '#' do
+            =link_to mypages_path do
               %p
-                test shop
+                = @item.user.nickname
             %br/
             .evaluation
               = fa_icon 'smile-o', class: "icon-smile"
@@ -61,49 +70,69 @@
         %tr
           %th 商品の状態
           %td
-            未使用
+            = @item.state
         %tr
           %th 配送料の負担
           %td
-            送料込み（出品者負担）
+            = @item.fee_payer
         %tr
           %th 配送の方法
           %td
-            らくらくメルカリ便
+            = @item.delivery
         %tr
           %th 配送元地域
           %td
             =link_to "#" do
-              東京都
+              = @item.city
         %tr
           %th 発送日の目安
           %td
-            2-3日で発送
+            = @item.delivery_time
     .product-price-box
       %span.product-price
-        ¥2,000
+        = "¥#{@item.price.to_s(:delimited)}"
       %span.product-tax （税込）
-      %span.product-fee_payer 送料込み
-    = link_to card_confirmation_path do
-      .product-buy-btn 購入画面に進む
-    .product-description
-      %p.product-description__inner
-        これはフリー画像です！！
-    .product-button-container.clearfix
-      .product-button-left
-        .product-button-like
-          %button{type: "button", name: "like!", class: "product-button"}
-            = fa_icon "heart-o"
-            %span.fade-in-down いいね!
-            %span.fade-in-down 0
-      .product-button__report
-        = link_to "", class: "product-button__report" do
-          = fa_icon "flag-o"
-          %span.fade-in-down 不適切な商品の報告
-      .product-button-right
-        = link_to '#' do
-          = fa_icon "lock"
-          あんしん・あんぜんへの取り組み
+      %span.product-fee_payer
+      = @item.fee_payer
+    -if user_signed_in?
+      -if @item.user_id == current_user.id
+        = link_to edit_item_path(@item), data: {turbolinks: false} do
+          .product-edit-btn 商品の編集
+          .product-btn-or or
+          .product-stop-btn 出品を一旦停止する
+        = link_to item_path(@item), method: :delete, data: {turbolinks: false} do
+          .product-stop-btn この商品を削除する
+      -else
+        -if @item.status == 0
+          = link_to card_confirmation_path do
+            .product-buy-btn 購入画面に進む
+        -else
+          .product-buy-btn-sold 売り切れました
+    -else
+      -if @item.status == 0
+        = link_to new_user_session_path do
+          .product-buy-btn 購入画面に進む
+      -else
+        .product-buy-btn-sold 売り切れました
+    -unless user_signed_in? && @item.user_id == current_user.id
+      .product-description
+        %p.product-description__inner
+          = @item.description
+      .product-button-container.clearfix
+        .product-button-left
+          .product-button-like
+            %button{type: "button", name: "like!", class: "product-button"}
+              = fa_icon "heart-o"
+              %span.fade-in-down いいね!
+              %span.fade-in-down 0
+        .product-button__report
+          = link_to "", class: "product-button__report" do
+            = fa_icon "flag-o"
+            %span.fade-in-down 不適切な商品の報告
+        .product-button-right
+          = link_to '#' do
+            = fa_icon "lock"
+            あんしん・あんぜんへの取り組み
 
   .message-content__box__form
     .product-message-content
