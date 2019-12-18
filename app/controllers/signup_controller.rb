@@ -16,7 +16,7 @@ class SignupController < ApplicationController
 
     @user.valid?
   
-    skip_phone_validate(@user.errors) 
+    skip_phone_validate(@user.errors)
     
     if @user.errors.messages.blank? && @user.errors.details.blank?
       create_session(user_params)

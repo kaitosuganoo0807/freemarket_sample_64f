@@ -10,6 +10,11 @@
         -# メイン画像
         .image
           = image_tag @image.image.to_s, size: "300x300"
+          - unless @item.status == 0
+            .product-tag-sold-out-top
+              .sold-out-text-top SOLD
+          - else
+            .none-sold
         -# サムネイル画像
         .owl-dot
           - @item.images.each.with_index do |image, index|

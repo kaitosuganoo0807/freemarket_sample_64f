@@ -37,6 +37,7 @@
     }
     h3 {
       font-size: .9rem;
+      font-weight: 600;
     }
     h4 {
       font-size: .9rem;
@@ -249,4 +250,46 @@
   color: #fff;
   background-color: #ea352d;
   right: 12px;
+}
+
+.round-icon{
+  margin-top:3px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #0099e8;
+  color: #fff;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sell-box__details--left {
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sell-box__delivery--left {
+  display: flex;
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sell-box__price--left {
+  display: flex;
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.link-blue{
+  color: #0099e8;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
 }
