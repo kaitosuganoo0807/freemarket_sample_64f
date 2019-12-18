@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
     @items = Item.all.order(created_at:"desc").limit(6)
     @images = @item.images
     @image = @images.first
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+    @comments = Comment.where(item_id: @item.id)
   end
 
 

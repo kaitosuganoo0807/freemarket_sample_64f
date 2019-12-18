@@ -138,18 +138,37 @@
           = link_to '#' do
             = fa_icon "lock"
             あんしん・あんぜんへの取り組み
-
+  .message-content
   .message-content__box__form
     .product-message-content
+      -if @comments
+        -@comments.each do |comment|
+          .product-message-comment
+            .message-items
+              .message-user
+                = image_tag 'https://static.mercdn.net/images/member_photo_noimage_thumb.png', size: '30x30', alt: 'user-icon', class:"user-icon"
+                .message-user-name
+                  %p
+                    = comment.user.nickname
+              .message-body
+                = comment.text
+                .message-icons
+                  .message-icon-left
+                    = fa_icon "history"
+                    %span
+                      1時間
+                  .message-icon-right
+                    .message-delete
+                      = link_to("/items/#{@item.id}/comments/#{comment.id}",{method:"delete"}) do
+                        = fa_icon "trash"
+                = fa_icon "ballon"
       .product-message-form
-        %form#new_comment.new_comment
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input{name: "authenticity_token", type: "hidden", value: "ay8wVVJ1p40rToOJJfUDnYrE7wkLhG33XzLE4GCyWO71aPUXyZKqndgwCjD+/iwxbj8D7RsHdgksf5T/BdSZXA=="}/
+        = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
           %p.attention
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %textarea.message-form{name: "body", type: "text", value: ""}
+          = f.text_area :text, class: "message-form"
           .message-submit__details
-            %input.comment-button{"data-disable-with": "コメントする", name: "commit", type: "submit", value: "コメントする"}/
+            = f.submit "コメントする", class:"comment-button"
     .nav-product-link
       .previous-product.items-link_to
         =fa_icon "chevron-left"
