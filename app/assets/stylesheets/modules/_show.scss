@@ -487,12 +487,19 @@
     margin-bottom:40px;
   .message-user{
     display: flex;
-      .message-user-name{
-        margin: auto 10px;
-        font-weight: bold;
-      }
-
+    .user-icon {
+      border-radius: 50px;
     }
+    .message-user-name{
+      margin: auto 10px;
+      font-weight: bold;
+      p {
+        background-color: #fff;
+        font-size: 16px;
+      }
+    }
+
+  }
   .message-body{
     margin: 10px auto;
     position: relative;
@@ -510,15 +517,15 @@
         display: block;
         color: #fff;
         width: 50%;
-      .fa-history{
-        color:#808080;
+        .fa-history{
+          color:#808080;
+        }
+        span{
+          color: #808080;
+        }
       }
-      span{
-        color: #808080;
-      }
-    }
-    .message-icon-right{
-      display: block;
+      .message-icon-right{
+        display: block;
         width: 50%;
         text-align: right;
         .message-delete{
@@ -526,7 +533,7 @@
             color:#808080;
           }
         }
-    }
+      }
     }
   }
 }

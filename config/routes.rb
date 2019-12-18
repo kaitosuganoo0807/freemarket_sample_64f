@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :destroy]
   
   resources :items do
+    resources :comments, only: [:create, :destroy]
     resources :images do
     end
   end
