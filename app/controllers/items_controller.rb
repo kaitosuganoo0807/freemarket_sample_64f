@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :user_login,only:[:new]
   before_action :set_items, only:[:show,:edit,:destroy,:update]
+  before_action :item_update_params, only:[:update]
 
   def index
     @items = Item.all.order(created_at:"desc").limit(10)
@@ -32,18 +33,20 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item= Item.find(params[:id])
     @images = @item.images.order(id: "desc")
   end
 
   def update
     if params[:item][:images_attributes] == nil
       @item.update(item_update_params)
-      redirect_to action: 'show'
+      redirect_to item_path
     else
       @item.images.destroy_all
       if @item.update(item_params)
-        redirect_to action 'show'
+        redirect_to item_path
       else
+        @item.images.build
         redirect_to(edit_item_path, notice: '編集できませんでした')
       end
     end
@@ -51,7 +54,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy if @item.user_id == current_user.id
-    redirect_to controller: :items, action: :index
+    redirect_to root_path
   end
   
 
@@ -71,6 +74,10 @@ class ItemsController < ApplicationController
 
     def user_login
       return redirect_to new_user_session_path  unless user_signed_in?
+    end
+
+    def item_update_params
+      params.require(:item).permit(:name, :description, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer).merge(user_id: current_user.id)
     end
 
 end

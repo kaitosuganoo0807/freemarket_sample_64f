@@ -4,7 +4,7 @@ $(function() {
       nextArrow:'.slick-next',
       dots: true,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 5000,
       speed: 800
   });
 
