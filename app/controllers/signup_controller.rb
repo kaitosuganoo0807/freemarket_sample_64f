@@ -13,19 +13,24 @@ class SignupController < ApplicationController
   end
 
   def registration_validates
-    
+
+    delete_errors
+
     @user = set_user_when_email(user_params)
-    
 
     @user.valid?
   
     skip_phone_validate(@user.errors)
     
+    binding.pry
+
     if @user.errors.messages.blank? && @user.errors.details.blank?
       create_session(user_params)
       redirect_to authentication_signup_index_path
+      return
     else
-      render :registration
+      errormessage(@user.errors)
+      redirect_to registration_signup_index_path
     end
   end
 
@@ -37,8 +42,13 @@ class SignupController < ApplicationController
   end
 
   def authentication_create
-    
+
+    delete_errors
     set_user_with_session
+
+    @user.valid?
+
+    errormessage(@user.errors)
 
     @user[:phone] = user_params[:phone]
     if @user.save
@@ -57,21 +67,20 @@ class SignupController < ApplicationController
   end
 
   def address_add
+
     @address = set_address(address_params)
     
     @address.valid?
     
     if @address.errors.messages.blank? && @address.errors.details.blank?
       create_session_address(address_params)
-      
-    else
-      render :address
-    end
-
-    if @address.save
+      @address.save
       redirect_to completed_signup_index_path
+      return
     else
-      render :address_add
+      errormessageaddress(@address.errors)
+      redirect_to address_signup_index_path
+      return
     end
 
   end
@@ -229,6 +238,42 @@ class SignupController < ApplicationController
       unless verify_recaptcha(model: resource)
         respond_with_navigational(resource) { render :new }
       end
+    end
+
+    def errormessage(errors)
+      session[:nickname_error] = @user.errors.messages[:nickname]
+      session[:email_error] = @user.errors.messages[:email]
+      session[:surname_error] = @user.errors.messages[:surname]
+      session[:first_name_error] = @user.errors.messages[:first_name]
+      session[:surname_kana_error] = @user.errors.messages[:surname_kana]
+      session[:first_name_kana_error] = @user.errors.messages[:first_name_kana]
+      session[:password_error] = @user.errors.messages[:password]
+      session[:birthday_error] = @user.errors.messages[:birthday]
+      session[:phone_error] = @user.errors.messages[:phone]
+    end
+
+    def delete_errors
+      session.delete(:nickname_error)
+      session.delete(:email_error)
+      session.delete(:surname_error)
+      session.delete(:first_name_error)
+      session.delete(:surname_kana_error)
+      session.delete(:first_name_kana_error)
+      session.delete(:password_error)
+      session.delete(:birthday_error)
+      session.delete(:phone_error)
+    end
+
+    def errormessageaddress(errors)
+      session[:user_id_error] = @address.errors.messages[:user_id]
+      session[:post_code_error] = @address.errors.messages[:post_code]
+      session[:prefecture_error] = @address.errors.messages[:prefecture]
+      session[:city_error] = @address.errors.messages[:city]
+      session[:surname_error] = @address.errors.messages[:surname]
+      session[:first_name_error] = @address.errors.messages[:first_name]
+      session[:surname_kana_error] = @address.errors.messages[:surname_kana]
+      session[:first_name_kana_error] = @address.errors.messages[:first_name_kana]
+      session[:street_error] = @address.errors.messages[:street]
     end
 
 end
