@@ -22,6 +22,14 @@ class ItemsController < ApplicationController
     @comments = Comment.where(item_id: @item.id)
   end
 
+  def show
+    @items = Item.all.order(created_at:"desc").limit(6)
+    @images = @item.images
+    @image = @images.first
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+    @comments = Comment.where(item_id: @item.id)
+  end
 
   def create
     @item = Item.new(item_params)
@@ -41,18 +49,17 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if params[:item][:images_attributes] == nil
-      @item.update(item_update_params)
-      redirect_to item_path
-    else
-      @item.images.destroy_all
-      if @item.update(item_params)
-        redirect_to item_path
-      else
-        @item.images.build
-        redirect_to(edit_item_path, notice: '編集できませんでした')
+    respond_to do |format|
+    if @item.update(item_update_params)
+      params[:images][:image].each do |image|
+        @item.images.create(image: image)
       end
+      format.html{redirect_to root_path}
+    else
+      @item.images.build
+      format.html{render action: 'edit'}
     end
+  end
   end
 
   def destroy

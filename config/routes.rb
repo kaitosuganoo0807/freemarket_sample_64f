@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "items#index"
   resources :mypages, only: :index
   resources :users, only: [:edit, :update, :destroy]
+  resources :card,only:[:index]
+  resources :card,only:[:create]
   
   resources :items do
     resources :comments, only: [:create, :destroy]
@@ -10,16 +12,12 @@ Rails.application.routes.draw do
     end
   end
 
-  
-
-  # 仮置き
-  get '/mypages/identification', to: 'mypages#identification'
-  get '/mypages/profile', to: 'mypages#profile'
-  get '/mypages/card', to: 'mypages#card'
-  get '/mypages/card/new', to: 'mypages#card_new'
-  get 'card/confirmation', to:'card#confirmation'
-  get 'card/completed', to: 'card#completed'
-  get 'mypages/destroy', to: 'mypages#destroy'
+  get '/mypage/identification', to: 'mypages#identification'
+  get '/mypage/profile', to: 'mypages#profile'
+  get '/mypage/card', to: 'mypages#card'
+  get '/mypage/card/new', to: 'mypages#card_new'
+  get 'mypage/destroy', to: 'mypages#destroy'
+  delete '/card/destroy', to: 'card#destroy'
   resources :signup, only: :index do
     collection do
       get 'registration'
@@ -30,6 +28,19 @@ Rails.application.routes.draw do
       post 'address_add'
       get 'credit'
       get 'completed'
+    end
+  end
+
+  resources :items,only:[:show] do
+    get 'card/pay', to: 'card#pay'
+    get 'card/confirmation', to:'card#confirmation'
+    get 'card/complete', to:'card#complete'
+  end
+
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
     end
   end
 end

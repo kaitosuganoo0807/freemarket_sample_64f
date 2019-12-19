@@ -174,7 +174,7 @@ class SignupController < ApplicationController
     end
 
     def address_params
-      params.permit(
+      params.require(:address).permit(
         :surname,
         :first_name,
         :surname_kana,

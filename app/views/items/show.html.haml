@@ -109,7 +109,7 @@
           .product-stop-btn この商品を削除する
       -else
         -if @item.status == 0
-          = link_to card_confirmation_path do
+          = link_to item_card_confirmation_path(@item), data: {turbolinks: false} do
             .product-buy-btn 購入画面に進む
         -else
           .product-buy-btn-sold 売り切れました

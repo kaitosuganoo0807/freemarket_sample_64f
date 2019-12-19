@@ -1,5 +1,5 @@
 = render 'shared/header'
-- breadcrumb :card
+- breadcrumb :card_new
 = render "shared/breadcrumb"
 .main-content
   .my-maine
@@ -7,7 +7,7 @@
     .card-input-contents
       %h2
         クレジットカード情報入力
-      = form_with id: "charge-form", url: "/", method: :get, local: true do |f|
+      = form_with id: "charge-form", url: "/card", method: :post, local: true do |f|
         .card-input-content
           .form-group
             %label
