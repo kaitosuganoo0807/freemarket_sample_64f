@@ -23,6 +23,17 @@
         padding: 24px 0;
         position: relative;
       }
+      .card-company-logos{
+        height: 15px;
+        max-width: 320px;
+      }
+      .cardlist__title__container {
+        height: 113px;
+        max-width:320px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+      }
       .add-card{
         background-color: #ea352d;
         height: 50px;
@@ -60,5 +71,33 @@
         text-decoration: underline;
       }
     }
+  }
+}
+.card-remove-btn{
+  position: absolute;
+  width: 70px;
+  height: 24px;
+  top: 50%;
+  right: 0;
+  padding: 4px 6px;
+  background-color: #ea352d;
+  border-radius: 3px;
+  border: 1px solid #ea352d;
+  color: #fff;
+  span {
+    color: #fff;
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+}
+.settings-not-regist{
+  max-width: 570px;
+  margin: 0 auto;
+  a{
+    display: block;
+    margin: 40px 0 0;
+    text-align: right;
+    color: #0099e8;
+    font-size:14px;
   }
 }

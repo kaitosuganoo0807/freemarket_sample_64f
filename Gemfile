@@ -96,5 +96,6 @@ gem 'active_hash'
 gem 'gretel'
 gem 'pry-rails'
 gem 'pry-byebug'
-
+gem 'dotenv-rails'
+gem 'ransack'
 gem 'recaptcha', require: "recaptcha/rails"
