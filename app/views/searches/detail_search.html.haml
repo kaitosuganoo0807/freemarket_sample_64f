@@ -1,0 +1,35 @@
+= render 'shared/header'
+
+.search
+  .search-container
+    .search-left
+      = render 'searches/form-bar'
+    .search-right
+      %section.items-box-container
+        -if @search.present?
+          %h2.search-result-head
+            =@search
+            %span.search-result-head-text
+              の検索結果
+          .search-result-number
+            ="1-#{@items.count}件表示"
+        -else
+          %h2.search-result-nil
+            検索結果
+          .search-result-number
+            ="1-#{@items.count}件表示"
+        .items-box-content
+          -@items.each do |item|
+            .search-items-list
+              = link_to "/items/#{item.id}", class: "search-items-list-link" do
+                - images = item.images
+                - image = images[0]
+                = image_tag "#{image.image_url}",class:"image"
+                .search-items-detail
+                  .search-items-price
+                    %span.search-price-yen
+                      = "¥#{item.price.to_s(:delimited)}"
+                  %h3.search-items-name
+                    = item.name
+= render 'shared/sell-btn'
+= render 'shared/footer'

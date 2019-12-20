@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :destroy]
   resources :card,only:[:index]
   resources :card,only:[:create]
+  resources :searches,only:[:index]
+
   
   resources :items do
     resources :comments, only: [:create, :destroy]
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   get '/mypage/card/new', to: 'mypages#card_new'
   get 'mypage/destroy', to: 'mypages#destroy'
   delete '/card/destroy', to: 'card#destroy'
+  get '/searches/detail_search', to: 'searches#detail_search'
   resources :signup, only: :index do
     collection do
       get 'registration'

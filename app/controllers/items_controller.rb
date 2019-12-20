@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
     if @item.update(item_update_params)
       params[:images][:image].each do |image|
-        @item.images.create(image: image)
+        @item.images.create(images: image)
       end
       format.html{redirect_to root_path}
     else
@@ -66,12 +66,15 @@ class ItemsController < ApplicationController
     @item.destroy if @item.user_id == current_user.id
     redirect_to root_path
   end
+
+  def image_destroy
+  end
   
 
   private
 
     def item_params
-      params.require(:item).permit(:name, :description, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image]).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :description, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image, :_destroy]).merge(user_id: current_user.id)
     end
   
     def create_items_instance

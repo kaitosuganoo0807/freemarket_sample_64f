@@ -1,10 +1,10 @@
 .header
   .header-top
     %h1
-      %a{href:"/"}
+      = link_to root_path do
         = image_tag "/fmarket_logo_red.svg", width: "150px"
     .fuzzy_search
-      %form.header-form
+      = form_tag(searches_path,method: :get) do
         %label.fuzzy_search__label
           = fa_icon 'search', class: "fuzzy_search__label--icon"
           = submit_tag 'search', name:  nil,class:"fuzzy_search__label--btn"
