@@ -9,7 +9,15 @@ class SignupController < ApplicationController
   end
 
   def registration
-    @user = User.new
+    @user = if session[:password_confirmation]
+           User.new(
+             nickname: session[:nickname],
+             email: session[:email],
+             password_confirmation: session[:password_confirmation]
+           )
+           else
+             User.new
+           end
   end
 
   def registration_validates
