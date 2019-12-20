@@ -21,15 +21,12 @@ class SignupController < ApplicationController
     @user.valid?
   
     skip_phone_validate(@user.errors)
-    
-    binding.pry
 
     if @user.errors.messages.blank? && @user.errors.details.blank?
       create_session(user_params)
       redirect_to authentication_signup_index_path
-      return
     else
-      errormessage(@user.errors)
+      error_message(@user.errors)
       redirect_to registration_signup_index_path
     end
   end
@@ -48,7 +45,7 @@ class SignupController < ApplicationController
 
     @user.valid?
 
-    errormessage(@user.errors)
+    error_message(@user.errors)
 
     @user[:phone] = user_params[:phone]
     if @user.save
@@ -76,11 +73,9 @@ class SignupController < ApplicationController
       create_session_address(address_params)
       @address.save
       redirect_to completed_signup_index_path
-      return
     else
-      errormessageaddress(@address.errors)
+      error_messageaddress(@address.errors)
       redirect_to address_signup_index_path
-      return
     end
 
   end
@@ -240,7 +235,7 @@ class SignupController < ApplicationController
       end
     end
 
-    def errormessage(errors)
+    def error_message(errors)
       session[:nickname_error] = @user.errors.messages[:nickname]
       session[:email_error] = @user.errors.messages[:email]
       session[:surname_error] = @user.errors.messages[:surname]
@@ -264,7 +259,7 @@ class SignupController < ApplicationController
       session.delete(:phone_error)
     end
 
-    def errormessageaddress(errors)
+    def error_messageaddress(errors)
       session[:user_id_error] = @address.errors.messages[:user_id]
       session[:post_code_error] = @address.errors.messages[:post_code]
       session[:prefecture_error] = @address.errors.messages[:prefecture]
