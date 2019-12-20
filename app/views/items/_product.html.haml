@@ -3,7 +3,7 @@
     .category-type
       .category-type__title
         %h3 新着アイテム
-        = link_to "#" do
+        = link_to searches_path do
           もっと見る >
       %ul.category-type__contents
         - @items.each do |item|

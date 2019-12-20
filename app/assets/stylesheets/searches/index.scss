@@ -40,12 +40,18 @@
               margin: 10px;
               width: 160px;
               height: 200px;
+              box-shadow:0px 1px 3px rgba(0, 0, 0, 0.219);
+              border:solid 1px #0093ee00;
+              &:hover{
+                border:solid 1px #0094ee;
+              }
               .search-items-list-link {
                 width: 100%;
                 .image {
                   width: 160px;
                   height: 110px;
                   object-fit: cover;
+                  max-width: 100%;
                 }
                 .search-items-detail {
                   box-sizing: border-box;
