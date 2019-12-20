@@ -66,12 +66,14 @@ class SignupController < ApplicationController
       
     else
       render :address
+      return
     end
 
     if @address.save
       redirect_to credit_signup_index_path
     else
       render :address_add
+      return
     end
 
   end
@@ -82,6 +84,7 @@ class SignupController < ApplicationController
     @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card, token: params['payjp-token'])
     if @card.save
       redirect_to controller: '/signup', action: 'completed'
+      return
     else
       redirect_to({action: "credit"}, notice: 'カード情報を入れ直してください')
     end
