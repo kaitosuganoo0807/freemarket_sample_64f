@@ -1,0 +1,97 @@
+.search{
+  background-color:#f5f5f5;
+  position: relative;
+    .search-container{
+      display:flex;
+      margin: 0 auto ;
+      padding-top: 40px;
+      width: 1020px;
+      .search-right{
+        width: 700px;
+        .items-box-container{
+          .search-result-head{
+            font-size: 22px;
+            margin: 0 0 8px;
+            font-weight:bold;
+            .search-result-head-text{
+              font-weight: 400;
+              font-size: 18px;
+            }
+          }
+          .search-result-number{
+            margin: 16px 0;
+            font-size: 12px;
+            color: #888;
+          }
+          .search-result-nil{
+            margin: 0 0 16px;
+            font-size: 22px;
+            font-weight:bold;
+          }
+          .items-box-content{
+            margin-top: 20px;
+            justify-content: flex-start;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .search-items-list {
+              position: relative;
+              background-color: #fff;
+              margin: 10px;
+              width: 160px;
+              height: 200px;
+              .search-items-list-link {
+                width: 100%;
+                .image {
+                  width: 160px;
+                  height: 110px;
+                  object-fit: cover;
+                }
+                .search-items-detail {
+                  box-sizing: border-box;
+                  color: #222;
+                  font-size: 14px;
+                  height: 90px;
+                  line-height: 2.0em;
+                  padding: 0 12px;
+                  white-space: normal;
+                  word-break: break-word;
+                }
+                .search-items-price {
+                    z-index: 2;
+                    position: absolute;
+                    height: 0;
+                    overflow: hidden;
+                    padding: 0 0 80px;
+                    left: 0px;
+                    bottom: 10px;
+                    .search-price-yen {
+                      margin: 0;
+                      padding: 0 12px;
+                      height: 28px;
+                      letter-spacing: .02em;
+                      display: inline-flex;
+                      font-size: 17px;
+                      align-items: center;
+                      background: rgba(0,0,0,.4);
+                      border-radius: 0 14px 14px 0;
+                      bottom: 8px;
+                      color: #fff;
+                    }
+                  }
+                  .search-items-name {
+                    display: inline-block;
+                    height: 2.8em;
+                    overflow: hidden;
+                    object-fit: cover;
+                    position: relative;
+                    top: 30%;
+                  }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+

@@ -81,6 +81,14 @@ class SignupController < ApplicationController
   end
 
   def credit
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.create(card: card_params['payjp-token'])
+    @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card, token: params['payjp-token'])
+    if @card.save
+      redirect_to controller: '/signup', action: 'completed'
+    else
+      redirect_to({action: "credit"}, notice: 'カード情報を入れ直してください')
+    end
   end
 
 
@@ -178,7 +186,7 @@ class SignupController < ApplicationController
     end
 
     def address_params
-      params.permit(
+      params.require(:address).permit(
         :surname,
         :first_name,
         :surname_kana,
@@ -269,6 +277,8 @@ class SignupController < ApplicationController
       session[:surname_kana_error] = @address.errors.messages[:surname_kana]
       session[:first_name_kana_error] = @address.errors.messages[:first_name_kana]
       session[:street_error] = @address.errors.messages[:street]
+    def card_params
+      params.permit('payjp-token',:item_id)
     end
 
 end
