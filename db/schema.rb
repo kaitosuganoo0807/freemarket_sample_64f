@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_042925) do
+ActiveRecord::Schema.define(version: 2019_12_18_114439) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "post_code", null: false
-    t.integer "prefecture"
+    t.integer "prefecture", null: false
     t.string "city", null: false
     t.string "street", null: false
     t.string "building"
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id"
+    t.string "card_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -89,13 +107,13 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", null: false
+    t.datetime "remember_created_at", null: false
     t.string "nickname", default: "", null: false
-    t.string "surname", default: ""
-    t.string "first_name", default: ""
-    t.string "surname_kana", default: ""
-    t.string "first_name_kana", default: ""
+    t.string "surname", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "surname_kana", default: "", null: false
+    t.string "first_name_kana", default: "", null: false
     t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -105,6 +123,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_042925) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
   add_foreign_key "sns_credentials", "users"
