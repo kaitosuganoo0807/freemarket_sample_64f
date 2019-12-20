@@ -69,7 +69,7 @@ class CardController < ApplicationController
     card_information
   end
 
-  def completed
+  def complete
     @item = Item.find(params[:item_id])
     @address = Address.find_by(user_id: current_user.id)
     card_information

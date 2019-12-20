@@ -69,7 +69,7 @@ class SignupController < ApplicationController
     end
 
     if @address.save
-      redirect_to completed_signup_index_path
+      redirect_to credit_signup_index_path
     else
       render :address_add
     end
@@ -77,6 +77,14 @@ class SignupController < ApplicationController
   end
 
   def credit
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.create(card: card_params['payjp-token'])
+    @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card, token: params['payjp-token'])
+    if @card.save
+      redirect_to controller: '/signup', action: 'completed'
+    else
+      redirect_to({action: "credit"}, notice: 'カード情報を入れ直してください')
+    end
   end
 
 
@@ -229,6 +237,10 @@ class SignupController < ApplicationController
       unless verify_recaptcha(model: resource)
         respond_with_navigational(resource) { render :new }
       end
+    end
+
+    def card_params
+      params.permit('payjp-token',:item_id)
     end
 
 end

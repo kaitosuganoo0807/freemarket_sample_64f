@@ -8,7 +8,7 @@
     .right-identity-information
       %section.right-container
         %h2.right-container__head 本人情報の登録
-        = form_with class: 'right-container__inner', url: "/", method: :get, local: true do |f|
+        = form_with model:@address,class: 'right-container__inner', url: "/", method: :get, local: true do |f|
           .form-group__first
             %p
               お客さまの本人情報をご登録ください。
@@ -21,13 +21,15 @@
           .form-group
             %label お名前
             %br
-            山田 太郎
+            = "#{current_user.surname}" + " " + "#{current_user.first_name}"
           .form-group
             %label お名前カナ
+            %br
+            = "#{current_user.surname_kana}" + " " + "#{current_user.first_name_kana}"
           .form-group
             %label 生年月日
             %br
-            1996/08/07
+            =current_user.birthday
           .form-group
             %label 郵便番号
             %span.form-arbitrary 任意
@@ -35,9 +37,9 @@
           .form-group
             %label 都道府県
             %span.form-arbitrary 任意
-            .select-wrap
-              = f.select :prefecture,{prompt: '---',class:"select-wrap"}
-              =fa_icon 'chevron-down'
+          .select-wrap
+            = f.select :prefecture, Address.prefectures.keys,{prompt: '---'},class:"input-defaul"
+            =fa_icon 'chevron-down'
           .form-group
             %label 市区町村
             %span.form-arbitrary 任意

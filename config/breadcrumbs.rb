@@ -32,4 +32,14 @@ crumb :card_new do
   parent :card
 end
 
+crumb :item do |item|
+  link "#{item.name}", item_path(item)
+  parent :root
+end
+
+crumb :search do |query|
+  link "{query}"
+  parent :root
+end
+
 
