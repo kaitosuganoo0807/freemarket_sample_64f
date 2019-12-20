@@ -71,7 +71,11 @@ class SignupController < ApplicationController
     
     if @address.errors.messages.blank? && @address.errors.details.blank?
       create_session_address(address_params)
-      @address.save
+    else
+      render :address
+    end
+
+    if @address.save
       redirect_to completed_signup_index_path
     else
       error_messageaddress(@address.errors)
