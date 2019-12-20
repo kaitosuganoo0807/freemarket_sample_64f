@@ -4,6 +4,7 @@ class SignupController < ApplicationController
   prepend_before_action :customize_sign_up_params, only: [:create]
   
   def index
+    delete_errors
     delete_session
     redirect_to root_path if user_signed_in?
   end
@@ -281,6 +282,8 @@ class SignupController < ApplicationController
       session[:surname_kana_error] = @address.errors.messages[:surname_kana]
       session[:first_name_kana_error] = @address.errors.messages[:first_name_kana]
       session[:street_error] = @address.errors.messages[:street]
+    end
+
     def card_params
       params.permit('payjp-token',:item_id)
     end

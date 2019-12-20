@@ -30,8 +30,7 @@
               携帯電話の番号
             = f.text_field :phone, placeholder: '携帯電話の番号を入力', class: "signup-main2__form__phone-number__input" 
           .errors-message
-            - if  session[:phone_error].blank?
-            - else
+            - if  session[:phone_error].present?
               会員登録できません
             .signup-main2__form__sub-head__text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             = f.submit "次へ進む", class:'signup-step2-submit'
