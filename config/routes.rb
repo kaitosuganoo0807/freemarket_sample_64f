@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'mypage/destroy', to: 'mypages#destroy'
   delete '/card/destroy', to: 'card#destroy'
   get '/searches/detail_search', to: 'searches#detail_search'
+  get '/category/:id',to: 'category#category'
+  get '/category2/:id',to: 'category#category2'
+  get '/category3/:id',to: 'category#category3'
   resources :signup, only: :index do
     collection do
       get 'registration'

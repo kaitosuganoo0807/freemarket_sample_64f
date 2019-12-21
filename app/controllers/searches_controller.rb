@@ -2,14 +2,14 @@ class SearchesController < ApplicationController
   before_action :set_ransack
 
   def index
-    @items = Item.search(params[:search]).limit(100)
+    @items = Item.search(params[:search]).page(params[:page]).per(15)
     @search = params[:search]
   end
 
   def detail_search
     @search = params[:q][:name_cont]
     @search_item = Item.ransack(params[:q])
-    @items = @search_item.result.page(params[:page])
+    @items = @search_item.result.page(params[:page]).per(15)
   end
 
   private

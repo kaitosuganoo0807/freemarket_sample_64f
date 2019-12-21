@@ -16,6 +16,7 @@ module FreemarketSample64f
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    Rails.application.config.assets.unknown_asset_fallback = true
 
     config.i18n.default_locale = :ja
 
