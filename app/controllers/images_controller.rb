@@ -8,4 +8,5 @@ class ImagesController < ApplicationController
 
   def images_params
     params.require(:image).permit(:image).merge(item_id: item.id)
+  end
 end
