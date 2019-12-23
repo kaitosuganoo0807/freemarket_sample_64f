@@ -26,4 +26,6 @@ class ApplicationController < ActionController::Base
   def set_category
     @category = MainCategoty.all.includes(sub_categories: :sub2_categories)
   end
+
+  
 end
