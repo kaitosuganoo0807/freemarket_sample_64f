@@ -73,7 +73,6 @@ class SignupController < ApplicationController
   end
 
   def address_add
-    binding.pry
     @address = set_address(address_params)
     
     @address.valid?
@@ -99,7 +98,6 @@ class SignupController < ApplicationController
 
 
   def credit_add
-    binding.pry
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.create(card: card_params['payjp-token'])
     @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card, token: params['payjp-token'])
