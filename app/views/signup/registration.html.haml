@@ -6,38 +6,56 @@
       .l-single-head__registration__form
         .l-single-content
           = form_with local: true, url: registration_validates_signup_index_path do |f|
-            .l-single-content__nickname 
-              = f.label :nickname, 'ニックネーム'
-              %span.hissu 必須
-              %br/
-              = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例)メルカリ太郎"
-              .errors-message
-                - if  session[:nickname_error].present?
-                  ニックネーム を入力してください
-            .l-single-content__email
-              = f.label :email, 'メールアドレス'
-              %span.hissu 必須
-              %br/
-              = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
-              .errors-message
-                - if  session[:email_error].present?
-                  メールアドレス を入力してください
-            .l-single-content__password
-              = f.label :password, 'パスワード'
-              %span.hissu 必須
-              %br/
-              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上"
-              .errors-message
-                - if  session[:password_error].present?
-                  パスワード を入力してください
-            .l-single-content__password__confirmation
-              = f.label :password_confirmation, 'パスワード（確認）'
-              %span.hissu 必須
-              %br/
-              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上"
-              .errors-message
-                - if  session[:password_error].present?
-                  パスワード(確認) を入力してください
+            - if session[:password_confirmation].present?
+              .l-single-content__nickname 
+                = f.label :nickname, 'ニックネーム'
+                %span.hissu 必須
+                %br/
+                = f.text_field :nickname, autofocus: true, autocomplete: "nickname", value: "#{ session[:nickname] }"
+                .errors-message
+                  - if  session[:nickname_error].present?
+                    ニックネーム を入力してください
+              .l-single-content__email
+                = f.label :email, 'メールアドレス'
+                %span.hissu 必須
+                %br/
+                = f.email_field :email, autocomplete: "email", value: "#{ session[:email] }"
+                .errors-message
+                  - if  session[:email_error].present?
+                    メールアドレス を入力してください
+            - else
+              .l-single-content__nickname 
+                = f.label :nickname, 'ニックネーム'
+                %span.hissu 必須
+                %br/
+                = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例)メルカリ太郎"
+                .errors-message
+                  - if  session[:nickname_error].present?
+                    ニックネーム を入力してください
+              .l-single-content__email
+                = f.label :email, 'メールアドレス'
+                %span.hissu 必須
+                %br/
+                = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+                .errors-message
+                  - if  session[:email_error].present?
+                    メールアドレス を入力してください
+              .l-single-content__password
+                = f.label :password, 'パスワード'
+                %span.hissu 必須
+                %br/
+                = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上"
+                .errors-message
+                  - if  session[:password_error].present?
+                    パスワード を入力してください
+              .l-single-content__password__confirmation
+                = f.label :password_confirmation, 'パスワード（確認）'
+                %span.hissu 必須
+                %br/
+                = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上"
+                .errors-message
+                  - if  session[:password_error].present?
+                    パスワード(確認) を入力してください
             .l-single-sub-head
               %h3.l-single-sub-head__left-text 本人確認
               %p.l-single-sub-head__text 

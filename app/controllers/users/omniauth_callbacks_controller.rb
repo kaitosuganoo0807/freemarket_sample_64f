@@ -36,11 +36,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         session[:provider] = info[:sns][:provider]
       end
       #登録フォームのviewにリダイレクトさせる
-      render template: "signup/registration" 
+      redirect_to registration_signup_index_path
     end
   end
 
   def failure
-    redirect_to root_path and return
+    redirect_to root_path
   end
 end

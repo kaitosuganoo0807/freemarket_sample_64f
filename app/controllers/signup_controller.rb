@@ -22,13 +22,14 @@ class SignupController < ApplicationController
   end
 
   def registration_validates
-
     delete_errors
 
-    @user = set_user_when_email(user_params)
-
+    @user = if session[:password_confirmation].present?
+              set_user_when_sns(user_params)
+            else
+              set_user_when_email(user_params)
+            end
     @user.valid?
-  
     skip_phone_validate(@user.errors)
 
     if @user.errors.messages.blank? && @user.errors.details.blank?
@@ -42,7 +43,6 @@ class SignupController < ApplicationController
 
 
   def authentication
-    
     @user = User.new
     
   end
@@ -58,7 +58,11 @@ class SignupController < ApplicationController
 
     @user[:phone] = user_params[:phone]
     if @user.save
-      
+      SnsCredential.create(
+        uid: session[:uid],
+        provider: session[:provider],
+        user_id: @user.id
+      )  
       sign_in User.find(@user.id) unless user_signed_in?
       delete_session
       redirect_to address_signup_index_path
@@ -76,10 +80,10 @@ class SignupController < ApplicationController
     @address = set_address(address_params)
     
     @address.valid?
-    
     if @address.errors.messages.blank? && @address.errors.details.blank?
       create_session_address(address_params)
     else
+      error_messageaddress(@address.errors)
       redirect_to address_signup_index_path
       return
     end
@@ -87,7 +91,6 @@ class SignupController < ApplicationController
     if @address.save
       redirect_to credit_signup_index_path
     else
-      error_messageaddress(@address.errors)
       redirect_to address_signup_index_path
     end
 
@@ -168,11 +171,15 @@ class SignupController < ApplicationController
     end
 
     def create_session(user_params)
+      if session[:password_confirmation].present?
+        session[:password] = session[:password_confirmation]
+      else
+        session[:password] = user_params[:password_confirmation]
+        session[:password_confirmation] = user_params[:password_confirmation]
+      end
       user_params[:birthday] = birthday_join
       session[:nickname] = user_params[:nickname]
       session[:email] = user_params[:email]
-      session[:password] = user_params[:password_confirmation]
-      session[:password_confirmation] = user_params[:password_confirmation]
       session[:surname] = user_params[:surname]
       session[:first_name] = user_params[:first_name]
       session[:surname_kana] = user_params[:surname_kana]
@@ -298,6 +305,22 @@ class SignupController < ApplicationController
 
     def card_params
       params.permit('payjp-token',:item_id)
+    end
+
+    def set_user_when_sns(user_params)
+      session[:email] = user_params[:email] unless session[:email]
+      user_params[:birthday] = birthday_join
+      User.new(
+        nickname: user_params[:nickname],
+        email: session[:email],
+        password: session[:password_confirmation],
+        password_confirmation: session[:password_confirmation],
+        surname: user_params[:surname],
+        first_name: user_params[:first_name],
+        surname_kana: user_params[:surname_kana],
+        first_name_kana: user_params[:first_name_kana],
+        birthday: user_params[:birthday]
+      )
     end
 
 end
