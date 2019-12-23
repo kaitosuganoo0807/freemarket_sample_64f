@@ -1,13 +1,6 @@
-// window.addEventListener('DOMContentLoaded',function(){ 
-//   $('.image').slick({
-//     asNavFor:'.owl-dot',
-//     draggable: false,
-//   });
-  
-//   $('.owl-dot').slick({
-//     asNavFor:'.image',
-//     focusOnSelect: true,
-//     infinite: false,
-//     slidesToShow: 5,
-//   });
-// });
+$(function(){
+  $('.image-sub').click(function(){
+    var selectedSrc = $(this).attr('src');
+    $('.image').html(`<img src="${selectedSrc}" width="300px" height="300px">`)
+  });
+});

@@ -67,6 +67,7 @@
       height: 50px;
       width: 400px;
       font-size: 1rem;
+      cursor: pointer;
     }
     .select-wrap {
       position: relative;
@@ -222,7 +223,7 @@
     &--edit, &--delete {
       cursor: pointer;
       text-align: center;
-      width: 50%;
+      width: 100%;
       line-height: 2rem;
       height: 2rem;
       &:hover {
@@ -250,6 +251,7 @@
   color: #fff;
   background-color: #ea352d;
   right: 12px;
+  font-weight: bold;
 }
 
 .round-icon{

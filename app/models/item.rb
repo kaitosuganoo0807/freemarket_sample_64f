@@ -4,6 +4,17 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :comments
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :category, presence: true
+  validates :price, presence: true
+  validates :status, presence: true
+  validates :state, presence: true
+  validates :city, presence: true
+  validates :delivery, presence: true
+  validates :fee_payer, presence: true
+  validates :delivery_time, presence: true
+
   enum category: { 'レディース': 1, 'メンズ': 2, 'ベビー・キッズ': 3, 'インテリア・住まい・小物': 4, '本・音楽・ゲーム': 5, 'おもちゃ・ホビー・グッズ':6, 'コスメ・香水・美容': 7, '家電・スマホ・カメラ': 8, 'スポーツ・レジャー': 9, 'ハンドメイド': 10, 'チケット': 11, '自動車・オートバイ': 12, 'その他': 13}, _prefix: true
   enum state: { 新品、未使用: 1, 未使用に近い: 2, 目立った傷や汚れなし: 3, やや傷や汚れあり: 4, 傷や汚れあり: 5, 全体的に状態が悪い: 6}, _prefix: true
   enum fee_payer: { "送料込み": 1, "着払い": 2}, _prefix: true

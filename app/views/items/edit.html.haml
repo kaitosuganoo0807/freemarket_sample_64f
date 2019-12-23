@@ -11,14 +11,14 @@
             %span 必須
           %p 最大10枚までアップロードできます
           .drop-zone
-            - @item.images.each do |image|
+            - @item.images.each do |images,image|
               .preview-box
                 .preview-box__img-box
-                  = image_tag "#{image.image}"
+                  = image_tag "#{images.image}",id: "update-image"
                 .preview-box__select
-                  = link_to "/item/#{@item.id}/images/#{image.id}", method: :delete 
-                  .preview-box__select--delete
-                    %p 削除
+                  = link_to item_image_path(images.id), method: :delete, data: {turbolinks: false} do
+                    .preview-box__select--delete
+                      %p 削除
             %label.sell-box__img--input
               %p
                 ドラッグアンドドロップ

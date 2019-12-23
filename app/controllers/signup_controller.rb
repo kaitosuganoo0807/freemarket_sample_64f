@@ -64,7 +64,7 @@ class SignupController < ApplicationController
       redirect_to address_signup_index_path
     else
       
-      render :authentication
+      redirect_to authentication_signup_index_path
     end
   end
 
@@ -73,7 +73,6 @@ class SignupController < ApplicationController
   end
 
   def address_add
-
     @address = set_address(address_params)
     
     @address.valid?
@@ -81,11 +80,12 @@ class SignupController < ApplicationController
     if @address.errors.messages.blank? && @address.errors.details.blank?
       create_session_address(address_params)
     else
-      render :address
+      redirect_to address_signup_index_path
+      return
     end
 
     if @address.save
-      redirect_to completed_signup_index_path
+      redirect_to credit_signup_index_path
     else
       error_messageaddress(@address.errors)
       redirect_to address_signup_index_path
@@ -94,13 +94,17 @@ class SignupController < ApplicationController
   end
 
   def credit
+  end
+
+
+  def credit_add
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.create(card: card_params['payjp-token'])
     @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card, token: params['payjp-token'])
     if @card.save
-      redirect_to controller: '/signup', action: 'completed'
+      redirect_to completed_signup_index_path
     else
-      redirect_to({action: "credit"}, notice: 'カード情報を入れ直してください')
+      redirect_to credit_signup_index_path
     end
   end
 

@@ -31,5 +31,6 @@
                       = "¥#{item.price.to_s(:delimited)}"
                   %h3.search-items-name
                     = item.name
+  = paginate(@items)
 = render 'shared/sell-btn'
 = render 'shared/footer'
