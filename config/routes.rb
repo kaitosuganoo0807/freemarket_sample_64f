@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get 'address'
       post 'address_add'
       get 'credit'
+      post 'credit_add'
       get 'completed'
     end
   end
