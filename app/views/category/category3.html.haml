@@ -1,0 +1,20 @@
+= render 'shared/header'
+= render 'shared/sell-btn'
+.category-toppage-main
+  .pickup-container
+    .pickup-contents
+      .pickup-content
+        .pickup-content__img
+        .pickup-content__text__box
+      .pickup-content__price-box
+        .pickup-contents-box
+          .category-contents-box
+            .pickup-contents__header
+              .pickup-contents__header-name
+                #{@categories.name}の商品一覧
+            .pickup-contents__image
+              = render @items
+  .category-ladies-btn #{@categories.name}
+
+
+= render 'shared/footer'

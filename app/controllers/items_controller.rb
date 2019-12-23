@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     @items = Item.all.order(created_at:"desc").limit(6)
     @images = @item.images
     @image = @images.first
+    @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
     @comments = Comment.where(item_id: @item.id)
@@ -44,16 +45,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item= Item.find(params[:id])
-    @images = @item.images.order(id: "desc")
   end
 
   def update
     respond_to do |format|
     if @item.update(item_update_params)
-      params[:images][:image].each do |image|
-        @item.images.create(images: image)
+      if params[:images].present?
+        params[:images][:image].each do |image|
+        @item.images.create(image: image)
       end
+    end
       format.html{redirect_to root_path}
     else
       @item.images.build
@@ -74,7 +75,7 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:name, :description, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image, :_destroy]).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :description, :category, :price, :status, :state, :city, :delivery, :delivery_time, :fee_payer, images_attributes: [:image]).merge(user_id: current_user.id)
     end
   
     def create_items_instance
