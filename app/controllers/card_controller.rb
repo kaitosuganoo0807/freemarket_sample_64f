@@ -90,8 +90,12 @@ class CardController < ApplicationController
   def card_information
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    customer = Payjp::Customer.retrieve(@card.customer_id)
-    @default_card_information = customer.cards.retrieve(@card.card_id)
+    if @card.nil?
+      redirect_to mypage_card_new_path
+    else
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
   end
 
 end
