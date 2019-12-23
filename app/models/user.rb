@@ -62,4 +62,6 @@ class User < ApplicationRecord
   has_many :cards
   has_many :shippings
   has_many :orders
+  has_many :addresses, dependent: :destroy
+  has_many :comments
 end

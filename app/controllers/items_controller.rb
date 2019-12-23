@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     @items = Item.all.order(created_at:"desc").limit(6)
     @images = @item.images
     @image = @images.first
+    @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
     @comments = Comment.where(item_id: @item.id)
