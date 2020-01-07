@@ -1,6 +1,7 @@
 ![image](https://user-images.githubusercontent.com/57335336/71912148-4e8f9e80-31b8-11ea-96ae-34f5e0a911f5.png)
 
 <h1 align="center">Fmarket</h1>
+プログラミングスクールTECH::EXPERTの最終課題で某フリーマーケットサービスのクローンサイトを作成しました。約1ヶ月間、４人チームでアジャイル開発を行いました。
 
 <div align="center">
   <img width="100" alt="haml" src="https://user-images.githubusercontent.com/57335336/71912723-63b8fd00-31b9-11ea-8b15-9709ac1f3303.png">
@@ -19,7 +20,7 @@
   - :key: 2222
 <br><br><br>
 
-## 
+# 
 
 
 
