@@ -51,7 +51,7 @@
 
 ![a4a5a9e69402506d59ae4ff00cee02f6](https://user-images.githubusercontent.com/57335336/71918286-5570de00-31c5-11ea-9570-3c4e19f5cc96.gif)
 
-<p align="center">jQueryを用いて、登録した写真のプレビューを見れるように実装しました。また写真の削除を[非同期での通信](https://github.com/kaitosuganoo0807/freemarket_sample_64f/blob/master/app/assets/javascripts/item_image.js)で可能にしました。</p>
+<p align="center">jQueryを用いて、登録した写真のプレビューを見れるように実装しました。また写真の削除を[非同期での通信]で可能にしました。</p>
 
 ![3c8491eca840f4b91e9256eebff5e058](https://user-images.githubusercontent.com/57335336/71918845-9289a000-31c6-11ea-930d-d2e5b48ee41b.gif)
 
