@@ -14,10 +14,9 @@
 ## 🌐URL
 ### http://52.193.251.163/
 ### Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
-<br>
-・Basic認証<br>
-  :id:mrcr<br>
-  :key:2222
+- Basic認証
+  - :id: mrcr
+  - :key: 2222
 <br><br><br>
 
 ## 
