@@ -20,12 +20,20 @@
   - :key: 2222
 <br><br><br>
 
-# 
+# テストユーザー
 
+- 購入者用アカウント
+  - メール:email::buyer@buyer.com
+  - パスワード:key::buyer123 
 
+- :credit_card: 購入用カード情報
+  - 番号：4242424242424242
+  - 期限：12/20
+  - セキュリティコード：123
 
-
-
+- 出品用アカウント
+  - メール:email::seller@seller.com
+  - パスワード:key:seller123
 
 
 
