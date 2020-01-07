@@ -36,6 +36,7 @@
   - パスワード:key:selleruser123
   ※本番環境ではFacebook/Googleでのログインはできませんのでご了承ください
 
+
 ## 🔍工夫した点
 <h3 align="center">ー 商品出品 ー</h3>
 <p align="center">商品情報を保存する**Itemテーブル**と写真を保存する**Imageテーブル**のレコードを1ページで作成するように実装しました。
@@ -48,15 +49,43 @@
     = i.file_field :image, multiple: true, id: "sell-img", name: "images[image][]"
 ```
 
+![a4a5a9e69402506d59ae4ff00cee02f6](https://user-images.githubusercontent.com/57335336/71918286-5570de00-31c5-11ea-9570-3c4e19f5cc96.gif)
+
+<p align="center">jQueryを用いて、登録した写真のプレビューを見れるように実装しました。また写真の削除を[非同期での通信](https://github.com/kaitosuganoo0807/freemarket_sample_64f/blob/master/app/assets/javascripts/item_image.js)で可能にしました。</p>
+
+![3c8491eca840f4b91e9256eebff5e058](https://user-images.githubusercontent.com/57335336/71918845-9289a000-31c6-11ea-930d-d2e5b48ee41b.gif)
+
+--- 
+
+<h3 align="center">ー コメント投稿機能 ー</h3>
+
+![1e4e061ed9c8b1eda0d3313f3e19a97d](https://user-images.githubusercontent.com/57335336/71919083-2491a880-31c7-11ea-8fa2-75ad25f4e5f6.gif)
+
+---
+
+<h3 align="center">ー あいまい検索 ー</h3>
+<p align="center">LIKE句を用いて、Itemテーブルのnameカラムと入力した値が合致したレコードを取得できるように実装しました。</p>
+
+```
+def self.search(search)
+    return Item.all unless search
+    Item.where(['name LIKE ?', "%#{search}%"])
+  end
+end
+```
+
+![6f8c89acca5e618c9396afcc22f1f8af](https://user-images.githubusercontent.com/57335336/71919366-da5cf700-31c7-11ea-922d-d4b87a810cd3.gif)
+
+---
+
+<h3 align="center">ー 詳細検索 ー</h3>
+<p align="center"> gem ransackを用いて、それぞれのカラムに入力した値と合致するレコードを取得できるように実装しました。また価格順/出品順に並び替えることもできます。</p>
+
+![6c52f45605635fb8bfa50eb40bc66318](https://user-images.githubusercontent.com/57335336/71919606-6c64ff80-31c8-11ea-8e97-b49276e56342.gif)
 
 
 
-
-
-
-
-
-# README
+# 📝DB設計
 
 
 
