@@ -8,7 +8,19 @@
   <img width="100" alt="rails" src="https://user-images.githubusercontent.com/57335336/71912909-bbefff00-31b9-11ea-85d4-bd7a6440f0a0.png">
   <img width="100" alt="jquery" src="https://user-images.githubusercontent.com/57335336/71912989-d924cd80-31b9-11ea-9774-4765c90b2281.png">
   <img width="100" alt="aws" src="https://user-images.githubusercontent.com/57335336/71913054-f6599c00-31b9-11ea-951f-0a0201e833a3.png">
+</div>
+<br><br><br>
 
+## 🌐URL
+### http://52.193.251.163/
+### Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
+<br>
+・Basic認証
+  :id:mrcr
+  :key:2222
+<br><br><br>
+
+## 
 
 
 
