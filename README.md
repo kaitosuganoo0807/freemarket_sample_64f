@@ -32,7 +32,7 @@
   - セキュリティコード：123
 
 - 出品用アカウント
-  - メール:email::seller_user１@gmail.com
+  - メール:email::seller_user1@gmail.com
   - パスワード:key:selleruser123
   ※本番環境ではFacebook/Googleでのログインはできませんのでご了承ください
 
